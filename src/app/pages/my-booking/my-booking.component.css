@@ -1,0 +1,44 @@
+.topic{
+    color: #86B817;
+}
+.room{
+    color: #121a01;
+    font-style: italic;
+}
+.room-booking{
+  margin-bottom: 30px;
+}
+.roomDetail{
+    color: #0df164e3;
+    font-weight: bold;
+}
+.roomDetail01{
+    color: #02491ce3;
+    font-weight: bold;
+}
+.hall{
+    color: #121a01;
+    font-style: italic;
+    font-weight: bold;
+}
+.hall-booking{
+  margin-bottom: 30px;
+}
+.hallDetail{
+    color: #0df164e3;
+    font-weight: bold;
+}
+.hallDetail01{
+    color: #02491ce3;
+    font-weight: bold;
+}
+.btnView{
+    color: #FFFFFF;
+    background-color: #01200de3 !important;
+    border-color: #01200de3 !important;
+}
+.btnEdit{
+    color: #FFFFFF;
+    background-color: #01200de3 !important;
+    border-color: #01200de3 !important;
+}

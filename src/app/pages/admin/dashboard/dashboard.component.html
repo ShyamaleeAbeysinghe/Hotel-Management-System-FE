@@ -1,0 +1,55 @@
+<div class="main-container">
+    <app-side-nav></app-side-nav>
+    <div class="dashboard">
+        <!-- ######## Header #### -->
+        <div class="header">
+            <h1 class="dashboard-title">Application</h1>
+            <div class="button-group">
+                <button><fa-icon [icon]="edit"></fa-icon> Edit</button>
+                <button class="blue_btn">
+                    <fa-icon [icon]="create"></fa-icon> Create
+                </button>
+            </div>
+        </div>
+        <!-- #### Header ##### -->
+
+        <!-- ###### Tabs #### -->
+        <div class="tabs">
+            <div class="tab">All Files</div>
+            <div class="tab">Shared</div>
+            <div class="tab">File Requests</div>
+        </div>
+        <!-- ### Tabs #### -->
+
+        <div class="wrapper">
+            <div class="cards-container">
+                <!-- Card 1 -->
+                <app-admin-card title="Budget" [value]="750.9" change="13%" iconName="budget"></app-admin-card>
+
+                <!-- Card 2 -->
+                <app-admin-card title="New Projects" [value]="215" change="30%" iconName="project"></app-admin-card>
+
+                <!-- Card 3 -->
+                <app-admin-card title="Total hours" [value]="1400" change="-5%" iconName="clock"></app-admin-card>
+
+                <!-- Card 4 -->
+                <app-admin-card title="Work load" [value]="95" change="10%" iconName="briefcase"></app-admin-card>
+            </div>
+
+            <div class="applications-section">
+                <h1>Applications</h1>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Company</th>
+                        <th>Offer</th>
+                        <th>Meeting</th>
+                        <th></th>
+                    </tr>
+                    <!-- ... (more HTML code) ... -->
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
