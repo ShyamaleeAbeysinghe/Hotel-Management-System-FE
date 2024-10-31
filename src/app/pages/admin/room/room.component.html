@@ -1,0 +1,42 @@
+<div class="col">
+  <div class="card shadow-sm col-lg-4 col-md-6 col-sm-12">
+    <div *ngIf="url">
+      <img [src]="url" alt="Upload room image" class="roomImg">
+    </div>
+
+    <input type="file" accept="image/jpg" (change)="addFile($event)" >
+    <div class="card-body">
+
+      <table class="roomTable ">
+        <tr>
+          <td><label class="roomDetail">Room Name</label></td>
+          <td><input type="text" [(ngModel)]="room.roomNo" class="roomDetail01"></td>
+        </tr>
+        <tr>
+          <td><label class="roomDetail">Room Number -></label></td>
+          <td><input type="text" [(ngModel)]="room.roomNo" class="roomDetail01"></td>
+        </tr>
+        <tr>
+          <td><label class="roomDetail">Description</label></td>
+          <td><input type="text" [(ngModel)]="room.description" class="roomDetail01"></td>
+        </tr>
+        <tr>
+          <td><label class="roomDetail">Size</label></td>
+          <td> <input type="text" [(ngModel)]="room.size" class="roomDetail01"></td>
+        </tr>
+        <tr>
+          <td><label class="roomDetail">Beds</label></td>
+          <input type="text" [(ngModel)]="room.beds" class="roomDetail01">
+        </tr>
+      </table>
+      <br>
+
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btnView">Save</button>
+          <button type="button" class="btn btnEdit">Cancel</button>
+
+        </div>
+      </div>
+    </div>

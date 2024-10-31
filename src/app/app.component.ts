@@ -5,11 +5,15 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AvailableRoomsComponent } from './pages/available-rooms/available-rooms.component';
 import { AvailableHallComponent } from './pages/available-hall/available-hall.component';
 import { MyBookingComponent } from './pages/my-booking/my-booking.component';
+import { ViewRoomComponent } from './pages/admin/view-room/view-room.component';
+import { ViewHallComponent } from './pages/admin/view-hall/view-hall.component';
+import { ViewStaffComponent } from './pages/admin/view-staff/view-staff.component';
+import { ViewMealComponent } from './pages/admin/view-meal/view-meal.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HeaderComponent,DashboardComponent,AvailableRoomsComponent,AvailableHallComponent,MyBookingComponent],
+  imports: [RouterOutlet,HeaderComponent,DashboardComponent,AvailableRoomsComponent,AvailableHallComponent,MyBookingComponent,ViewRoomComponent,ViewHallComponent,ViewStaffComponent,ViewMealComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

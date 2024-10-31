@@ -7,11 +7,12 @@ import {
   faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RouterModule,Routes } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav',
   standalone: true,
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule,RouterModule],
   templateUrl: './side-nav.component.html',
   styleUrl: './side-nav.component.css'
 })

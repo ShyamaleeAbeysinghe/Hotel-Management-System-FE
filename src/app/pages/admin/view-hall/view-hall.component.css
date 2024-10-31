@@ -1,0 +1,25 @@
+.ngx-datatable {
+    border: 1px solid #dddddd;
+    
+  }
+.HallD{
+    color: #13e41a;
+    text-align: center;
+    font-weight: bold;
+}
+.addHall{
+    background-color: #07bb0d;
+    border-color: #07bb0d;
+    align-items:center;
+    justify-content: center;
+    color:white;
+    font-weight: bold;
+  }
+  .btnEdit{
+    background-color: #057909;
+    border-color: #057909;
+  }
+  .btnDelete{
+    background-color: #023d04;
+    border-color: #023d04;
+  }

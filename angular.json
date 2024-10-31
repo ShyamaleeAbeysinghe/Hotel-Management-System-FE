@@ -33,7 +33,12 @@
               "node_modules/animate.css/animate.min.css",
               "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
               "node_modules/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "node_modules/@swimlane/ngx-datatable/index.css",
+              "node_modules/@swimlane/ngx-datatable/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/themes/dark.css",
+              "node_modules/@swimlane/ngx-datatable/themes/bootstrap.css",
+              "node_modules/@swimlane/ngx-datatable/assets/icons.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",

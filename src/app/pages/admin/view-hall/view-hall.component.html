@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-2 col-md-3 col-xl-2 col-sm-3 col-xs-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <app-side-nav></app-side-nav>
+            </div>
+
+        </div>
+        <div class="col-10 col-md-9 col-xl-10 col-sm-9 col-xs-10  bg-light">
+            <div>
+                <h1 class="HallD">Hall Details</h1>
+            </div>
+           <div class=" divHall">
+            <button class="btn addHall" (click)="addHall()">Add Hall</button>
+           </div>
+            <br>
+            <br>
+
+            <ngx-datatable class="dark" [rows]="rows | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: rows && rows.length }" [columnMode]="'force'" [headerHeight]="50"
+            [footerHeight]="50" [rowHeight]="50" [scrollbarV]="false">
+            <ngx-datatable-column name="Name" prop="name">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row.name }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Hall No" prop="hallNo">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{row.hallNo}}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Price" prop="price">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row.price }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Chairs" prop="chairs">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row.chairs }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Tables" prop="tables">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row.tables }}
+                </ng-template>
+            </ngx-datatable-column>
+            
+            <ngx-datatable-column name="Action" prop="action" >
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <button class="btn btn-primary btnEdit" (click)="editHall(row)">Edit</button>&nbsp;
+                    <button class="btn btn-danger btnDelete">Delete</button>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-footer>
+                <ng-template ngx-datatable-footer-template>
+<p>Showing: {{currentPage}} to {{pageSize}}  of  {{rows.length}}entries</p>
+                    <div class="d-flex justify-content-center">
+                        <pagination-controls [directionLinks]="true" previousLabel="" nextLabel=""
+                            (pageChange)="currentPage = $event">
+                        </pagination-controls>
+                    </div>
+
+                </ng-template>
+            </ngx-datatable-footer>
+        </ngx-datatable>
+        </div>
+    </div>
+</div>

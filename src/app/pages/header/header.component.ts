@@ -1,11 +1,15 @@
 import { Component, AfterViewInit, OnInit, ElementRef } from '@angular/core';
 import * as $ from 'jquery';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+import { AvailableRoomsComponent } from '../available-rooms/available-rooms.component';
+import { AvailableHallComponent } from '../available-hall/available-hall.component';
+import { MyBookingComponent } from '../my-booking/my-booking.component';
 
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [DashboardComponent,AvailableRoomsComponent,AvailableHallComponent,MyBookingComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

@@ -1,0 +1,21 @@
+.ngx-datatable {
+    border: 1px solid #dddddd;
+    
+  }
+  .RoomD{
+    color: #13e41a;
+    text-align: center;
+    font-weight: bold;
+  }
+  .addRoom{
+    background-color: #07bb0d;
+    border-color: #07bb0d;
+  }
+  .btnEdit{
+    background-color: #057909;
+    border-color: #057909;
+  }
+  .btnDelete{
+    background-color: #023d04;
+    border-color: #023d04;
+  }

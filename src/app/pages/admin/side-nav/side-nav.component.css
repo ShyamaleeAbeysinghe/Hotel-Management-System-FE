@@ -43,3 +43,9 @@ ul {
     margin-right: 10px;
     /* spacing between icon and text */
 }
+.nav-link{
+    color: #13e41a;
+}
+.admin{
+    color: #13e41a;
+}
