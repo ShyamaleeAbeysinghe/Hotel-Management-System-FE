@@ -1,0 +1,27 @@
+.ngx-datatable {
+    border: 1px solid #dddddd;
+    
+  }
+.mealD{
+    color: #13e41a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .addMeal{
+    background-color: #07bb0d;
+    border-color: #07bb0d;
+    align-items:center;
+    justify-content: center;
+    color:white;
+    font-weight: bold;
+    float: right;
+  }
+  .btnEdit{
+    background-color: #057909;
+    border-color: #057909;
+  }
+  .btnDelete{
+    background-color: #023d04;
+    border-color: #023d04;
+  }

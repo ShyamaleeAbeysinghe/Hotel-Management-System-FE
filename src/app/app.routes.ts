@@ -5,11 +5,18 @@ import { ViewRoomComponent } from './pages/admin/view-room/view-room.component';
 import { ViewHallComponent } from './pages/admin/view-hall/view-hall.component';
 import { ViewStaffComponent } from './pages/admin/view-staff/view-staff.component';
 import { ViewMealComponent } from './pages/admin/view-meal/view-meal.component';
+import { LoginComponent } from './pages/admin/login/login.component';
+import { authGuard } from './auth.guard';
+import { ViewCustomerComponent } from './pages/admin/view-customer/view-customer.component';
 
 export const routes: Routes = [
 {
     path:"admin/dashboard",
-    component:DashboardComponent
+    component:DashboardComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Admin']
+    }
 },
 {
     path:"admin/dashboard1",
@@ -17,7 +24,11 @@ export const routes: Routes = [
 },
 {
     path:"admin/view-room",
-    component:ViewRoomComponent
+    component:ViewRoomComponent,
+    canActivate: [authGuard],
+    data: {
+      roles:['Admin','Reception']
+    }
 },
 {
     path:"admin/view-hall",
@@ -30,5 +41,13 @@ export const routes: Routes = [
 {
     path:"admin/view-meal",
     component:ViewMealComponent
+},
+{
+    path:"admin/login",
+    component:LoginComponent
+},
+{
+    path:"admin/view-customer",
+    component:ViewCustomerComponent
 }
 ];

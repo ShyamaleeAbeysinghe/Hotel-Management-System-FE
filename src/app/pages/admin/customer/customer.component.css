@@ -1,0 +1,37 @@
+.customer{
+    color: #121a01;
+    font-style: italic;
+}
+.customer-booking{
+  margin-bottom: 30px;
+}
+.customerDetail{
+    color: #0df164e3;
+    font-weight: bold;
+}
+.customerDetail01{
+    color: #02491ce3;
+    font-weight: bold;
+}
+
+.btnView{
+    color: #FFFFFF;
+    background-color: #01200de3 !important;
+    border-color: #01200de3 !important;
+}
+.btnEdit{
+    color: #FFFFFF;
+    background-color: #01200de3 !important;
+    border-color: #01200de3 !important;
+}
+.customerTable{
+    width: 500px;
+}
+.card {
+    width: 500px;
+}
+
+.mealImg{
+    width: 300px;
+    height: 300px;
+}

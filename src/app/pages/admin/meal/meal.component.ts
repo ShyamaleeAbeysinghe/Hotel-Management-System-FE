@@ -1,60 +1,57 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 import { ModalReference } from '@developer-partners/ngx-modal-dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
-interface Hall {
+interface Meal {
   name: string,
   price: string,
-  chairs: string,
-  tables: string
+  description: string,
+ 
 }
 
-
 @Component({
-  selector: 'app-hall',
+  selector: 'app-meal',
   standalone: true,
   imports: [FormsModule, CommonModule, ReactiveFormsModule, MatIconModule, MatFormFieldModule],
-  templateUrl: './hall.component.html',
-  styleUrl: './hall.component.css'
+  templateUrl: './meal.component.html',
+  styleUrl: './meal.component.css'
 })
-export class HallComponent implements OnInit {
-  [x: string]: any;
+export class MealComponent implements OnInit{
+
   form!: FormGroup;
   public url: any;
   loading = false;
   submitted = false;
-  public hall: Hall = {
+  public meals: Meal = {
     name: '',
     price: '',
-    chairs: '',
-    tables: ''
+    description: ''
   };
 
-  constructor(private modalReference: ModalReference<Hall>,
+  constructor(private modalReference: ModalReference<Meal>,
     private formBuilder: FormBuilder,) {
     if (this.modalReference.config.model) {
       let copy = this.modalReference.config.model;
-      this.hall = copy;
+      this.meals = copy;
+
     }
   }
+
+
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
-      chairs: ['', Validators.required],
-      tables: ['', Validators.required]
-
+      description: ['', Validators.required]
     });
 
     this.form.setValue({
-      name: this.hall.name,
-      price: this.hall.price,
-      chairs: this.hall.chairs,
-      tables: this.hall.tables,
-
+      name: this.meals.name,
+      price: this.meals.price,
+      description: this.meals.description
     });
   }
 
@@ -87,6 +84,7 @@ export class HallComponent implements OnInit {
   }
 
   saveRoom() {
-    console.log(this.hall)
+    console.log(this.meals)
   }
+
 }

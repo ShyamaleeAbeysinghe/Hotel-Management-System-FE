@@ -1,60 +1,65 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 import { ModalReference } from '@developer-partners/ngx-modal-dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
-interface Hall {
+interface Customer {
   name: string,
-  price: string,
-  chairs: string,
-  tables: string
+  age: string,
+  address: string,
+  contact: string,
+  email: string
+ 
+ 
 }
 
-
 @Component({
-  selector: 'app-hall',
+  selector: 'app-customer',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, MatIconModule, MatFormFieldModule],
-  templateUrl: './hall.component.html',
-  styleUrl: './hall.component.css'
+  imports: [CommonModule, FormsModule, ReactiveFormsModule,MatIconModule,MatFormFieldModule],
+  templateUrl: './customer.component.html',
+  styleUrl: './customer.component.css'
 })
-export class HallComponent implements OnInit {
+export class CustomerComponent implements OnInit{
+
   [x: string]: any;
   form!: FormGroup;
   public url: any;
   loading = false;
   submitted = false;
-  public hall: Hall = {
+  public customer: Customer = {
     name: '',
-    price: '',
-    chairs: '',
-    tables: ''
+    age: '',
+    address: '',
+    contact: '',
+    email:''
   };
 
-  constructor(private modalReference: ModalReference<Hall>,
+  constructor(private modalReference: ModalReference<Customer>,
     private formBuilder: FormBuilder,) {
     if (this.modalReference.config.model) {
       let copy = this.modalReference.config.model;
-      this.hall = copy;
+      this.customer = copy;
     }
   }
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      price: ['', Validators.required],
-      chairs: ['', Validators.required],
-      tables: ['', Validators.required]
+      age: ['', Validators.required],
+      address: ['', Validators.required],
+      contact: ['', Validators.required],
+      email: ['', Validators.required]
 
     });
 
     this.form.setValue({
-      name: this.hall.name,
-      price: this.hall.price,
-      chairs: this.hall.chairs,
-      tables: this.hall.tables,
-
+      name: this.customer.name,
+      age: this.customer.age,
+      address: this.customer.address,
+      contact: this.customer.contact,
+      email: this.customer.email
     });
   }
 
@@ -87,6 +92,8 @@ export class HallComponent implements OnInit {
   }
 
   saveRoom() {
-    console.log(this.hall)
+    console.log(this.customer)
   }
+
+
 }

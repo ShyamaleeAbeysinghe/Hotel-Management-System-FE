@@ -9,11 +9,14 @@ import { ViewRoomComponent } from './pages/admin/view-room/view-room.component';
 import { ViewHallComponent } from './pages/admin/view-hall/view-hall.component';
 import { ViewStaffComponent } from './pages/admin/view-staff/view-staff.component';
 import { ViewMealComponent } from './pages/admin/view-meal/view-meal.component';
+import { LoginComponent } from './pages/admin/login/login.component';
+import { ViewCustomerComponent } from './pages/admin/view-customer/view-customer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HeaderComponent,DashboardComponent,AvailableRoomsComponent,AvailableHallComponent,MyBookingComponent,ViewRoomComponent,ViewHallComponent,ViewStaffComponent,ViewMealComponent],
+  imports: [RouterOutlet,HeaderComponent,DashboardComponent,AvailableRoomsComponent,AvailableHallComponent,
+    MyBookingComponent,ViewRoomComponent,ViewHallComponent,ViewStaffComponent,ViewMealComponent,LoginComponent,ViewCustomerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

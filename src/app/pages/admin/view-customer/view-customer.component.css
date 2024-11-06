@@ -1,12 +1,19 @@
-
-  .RoomD{
+.ngx-datatable {
+    border: 1px solid #dddddd;
+    
+  }
+.customerlD{
     color: #13e41a;
     text-align: center;
     font-weight: bold;
-  }
-  .addRoom{
+}
+.addCustomer{
     background-color: #07bb0d;
     border-color: #07bb0d;
+    align-items:center;
+    justify-content: center;
+    color:white;
+    font-weight: bold;
     float: right;
   }
   .btnEdit{

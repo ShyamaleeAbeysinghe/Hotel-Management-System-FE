@@ -1,0 +1,76 @@
+<div class="col">
+    <div class="card shadow-sm col-lg-4 col-md-6 col-sm-12">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div *ngIf="url">
+          <img [src]="url" alt="Upload room image" class="mealImg">
+        </div>
+        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+          <div *ngIf="f['name'].errors['required']">Username is required</div>
+        </div>
+        <input type="file" accept="image/jpg" (change)="addFile($event)">
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">Meal</label>
+            <input type="text" formControlName="name" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+              <div *ngIf="f['name'].errors['required']">Meal is required</div>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Price</label>
+            <input type="text" formControlName="price" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['price'].errors }" />
+            <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+              <div *ngIf="f['price'].errors['required']">Price is required</div>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <input type="text" formControlName="description" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['description'].errors }" />
+            <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+              <div *ngIf="f['description'].errors['required']">Description is required</div>
+            </div>
+          </div>
+          <table class="mealTable ">
+            <!-- <tr>
+              <td><label class="roomDetail">Room Name</label></td>
+              <td><input type="text" formControlName="name" class="roomDetail01"></td>
+              <td *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                <div *ngIf="f['name'].errors['required']">Username is required</div>
+              </td>
+            </tr> -->
+            <!-- <tr>
+              <td><label class="roomDetail">Room Number -></label></td>
+              <td><input type="text" formControlName="roomNo" class="roomDetail01"></td>
+            </tr> -->
+            <!-- <tr>
+              <td><label class="roomDetail">Description</label></td>
+              <td><input type="text" formControlName="description" class="roomDetail01"></td>
+            </tr> -->
+            <!-- <tr>
+              <td><label class="roomDetail">Size</label></td>
+              <td> <input type="text" formControlName="size" class="roomDetail01"></td>
+            </tr> -->
+            <!-- <tr>
+              <td><label class="roomDetail">Beds</label></td>
+              <input type="text" formControlName="beds" class="roomDetail01">
+            </tr> -->
+          </table>
+          <br>
+  
+  
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button class="btn btnView">Save</button>
+              <button type="button" class="btn btnEdit">Cancel</button>
+  
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

@@ -15,36 +15,44 @@
 </a>
 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 
-    <li>
+    <li *ngIf="canAccessDashboard">
         <a [routerLink]="['/admin/dashboard']"  class="nav-link px-0 align-middle">
             <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
 
     </li>
-    <li>
+    <li *ngIf="canAccessRoom">
         <a [routerLink]="['/admin/view-room']" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
             <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Rooms</span>
         </a>
         
     </li>
-    <li>
+    <li *ngIf="canAccessHall">
         <a [routerLink]="['/admin/view-hall']" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
             <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Event Hall</span>
         </a>
        
     </li>
-    <li>
+    <li *ngIf="canAccessMeals">
         <a [routerLink]="['/admin/view-meal']" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
             <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Meals</span> 
         </a>
         
     </li>
-    <li>
+    <li *ngIf="canAccessStaff">
         <a [routerLink]="['/admin/view-staff']" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
             <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Staff</span> 
         </a>
         
     </li>
-    <li>
+
+    <li *ngIf="canAccessCustomer">
+        <a [routerLink]="['/admin/view-customer']" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customer</span>
+        </a>
+        
+    </li>
+
+    <li *ngIf="canAccessOrder">
         <a href="#submenu5" class="nav-link px-0 align-middle">
             <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">View Order</span> </a>
         <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
@@ -66,6 +74,6 @@
         <li>
             <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item admin" href="#">Sign out</a></li>
+        <li><a class="dropdown-item admin" (click)="signOut()">Sign out</a></li>
     </ul>
 </div>

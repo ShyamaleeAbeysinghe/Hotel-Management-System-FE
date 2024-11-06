@@ -1,42 +1,85 @@
 <div class="col">
-    <div class="card shadow-sm col-lg-4 col-md-6 col-sm-12">
+  <div class="card shadow-sm col-lg-4 col-md-6 col-sm-12">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div *ngIf="url">
-        <img [src]="url" alt="Upload room image" class="hallImg">
+        <img [src]="url" alt="Upload hall image" class="hallImg">
       </div>
-  
-      <input type="file" accept="image/jpg" (change)="addFile($event)" >
+      <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+        <div *ngIf="f['name'].errors['required']">Username is required</div>
+      </div>
+      <input type="file" accept="image/jpg" (change)="addFile($event)">
       <div class="card-body">
-  
-        <table class="hallTable ">
-          <tr>
-            <td><label class="hallDetail">Hall Name</label></td>
-            <td><input type="text" [(ngModel)]="hall.name" class="hallmDetail01"></td>
-          </tr>
-          <tr>
-            <td><label class="hallDetail">Hall Nummber -></label></td>
-            <td><input type="text" [(ngModel)]="hall.hallNo" class="hallmDetail01"></td>
-          </tr>
-          <tr>
-            <td><label class="hallDetail">Price</label></td>
-            <td><input type="text" [(ngModel)]="hall.price" class="hallmDetail01"></td>
-          </tr>
-          <tr>
-            <td><label class="hallDetail">Chairs</label></td>
-            <td> <input type="text" [(ngModel)]="hall.chairs" class="hallmDetail01"></td>
-          </tr>
-          <tr>
-            <td><label class="hallDetail">Tables</label></td>
-            <input type="text" [(ngModel)]="hall.tables" class="hallmDetail01">
-          </tr>
+        <div class="mb-3">
+          <label class="form-label">Hall Name</label>
+          <input type="text" formControlName="name" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
+          <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+            <div *ngIf="f['name'].errors['required']">Hall Name is required</div>
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label class="form-label">Price</label>
+          <input type="text" formControlName="price" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['roomNo'].errors }" />
+          <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+            <div *ngIf="f['price'].errors['required']">Price is required</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Chairs</label>
+          <input type="text" formControlName="description" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['chairs'].errors }" />
+          <div *ngIf="submitted && f['chairs'].errors" class="invalid-feedback">
+            <div *ngIf="f['chairs'].errors['required']">Chairs is required</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Tables</label>
+          <input type="text" formControlName="size" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['tables'].errors }" />
+          <div *ngIf="submitted && f['tables'].errors" class="invalid-feedback">
+            <div *ngIf="f['tables'].errors['required']">Tables  is required</div>
+          </div>
+        </div>
+        <table class="roomTable ">
+          <!-- <tr>
+            <td><label class="roomDetail">Room Name</label></td>
+            <td><input type="text" formControlName="name" class="roomDetail01"></td>
+            <td *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+              <div *ngIf="f['name'].errors['required']">Username is required</div>
+            </td>
+          </tr> -->
+          <!-- <tr>
+            <td><label class="roomDetail">Room Number -></label></td>
+            <td><input type="text" formControlName="roomNo" class="roomDetail01"></td>
+          </tr> -->
+          <!-- <tr>
+            <td><label class="roomDetail">Description</label></td>
+            <td><input type="text" formControlName="description" class="roomDetail01"></td>
+          </tr> -->
+          <!-- <tr>
+            <td><label class="roomDetail">Size</label></td>
+            <td> <input type="text" formControlName="size" class="roomDetail01"></td>
+          </tr> -->
+          <!-- <tr>
+            <td><label class="roomDetail">Beds</label></td>
+            <input type="text" formControlName="beds" class="roomDetail01">
+          </tr> -->
         </table>
         <br>
-  
-  
+
+
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
-            <button type="button" class="btn btnView">Save</button>
+            <button class="btn btnView">Save</button>
             <button type="button" class="btn btnEdit">Cancel</button>
-  
+
           </div>
         </div>
       </div>
+    </form>
+  </div>
+</div>

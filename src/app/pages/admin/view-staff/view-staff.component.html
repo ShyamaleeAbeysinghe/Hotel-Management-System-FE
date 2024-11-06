@@ -6,5 +6,76 @@
             </div>
 
         </div>
+
+        <div class="col-10 col-md-9 col-xl-10 col-sm-9 col-xs-10  bg-light">
+            <!-- <div style="background-color: white;"> -->
+                
+                <div>
+                    <h1 class="staffD">Staff Details</h1>
+                </div>
+                <button class="btn btn-primary addStaff" (click)="addStaff()">Add Staff</button>
+                <br>
+                <br>
+
+                <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+                  </mat-form-field>
+                <div class="mat-app-background dark-theme">
+                    <table mat-table [dataSource]="dataSource" matSort>
+
+                        <!-- ID Column -->
+                        <ng-container matColumnDef="fname">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+                            <td mat-cell *matCellDef="let row"> {{row.fname}} </td>
+                          </ng-container>
+    
+                        <!-- ID Column -->
+                        <ng-container matColumnDef="lname">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+                          <td mat-cell *matCellDef="let row"> {{row.lname}} </td>
+                        </ng-container>
+                    
+                        <!-- Progress Column -->
+                        <ng-container matColumnDef="address">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+                          <td mat-cell *matCellDef="let row"> {{row.address}} </td>
+                        </ng-container>
+                    
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="contact">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Contact </th>
+                          <td mat-cell *matCellDef="let row"> {{row.contact}} </td>
+                        </ng-container>
+                    
+                        <!-- Color Column -->
+                        <ng-container matColumnDef="nic">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> NIC </th>
+                          <td mat-cell *matCellDef="let row" > {{row.nic}} </td>
+                        </ng-container>
+
+                        <!-- Color Column -->
+                        <ng-container matColumnDef="role">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
+                            <td mat-cell *matCellDef="let row" > {{row.role}} </td>
+                          </ng-container>
+                    
+                        <!-- Color Column -->
+                        <ng-container matColumnDef="edit">
+                          <th mat-header-cell *matHeaderCellDef > Edit </th>
+                          <td mat-cell *matCellDef="let row" > <button class="btn btn-primary btnEdit" (click)="editStaff(row)">Edit</button></td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="delete">
+                          <th mat-header-cell *matHeaderCellDef > Delete </th>
+                          <td mat-cell *matCellDef="let row" > <button class="btn btn-danger btnDelete">Delete</button></td>
+                        </ng-container>
+                    
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </tr>
+                      </table>
+                    
+                      <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]="true"></mat-paginator>
+        </div>
     </div>
 </div>
