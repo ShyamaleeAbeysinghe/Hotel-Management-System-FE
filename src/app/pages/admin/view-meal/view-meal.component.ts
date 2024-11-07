@@ -7,11 +7,15 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';import { MatInputModule } from '@angular/material/input';
 import { MealComponent } from '../meal/meal.component';
+import { ToastrService } from 'ngx-toastr';
+import { DashboardService } from '../../../service/dashboard.service';
 
 interface Meal {
-  name: string,
+  id:number,
+  foodName: string,
   price: string,
   description: string,
+  img:string
   
 }
 
@@ -24,40 +28,20 @@ interface Meal {
   styleUrl: './view-meal.component.css'
 })
 export class ViewMealComponent implements OnInit,AfterViewInit{
-  displayedColumns: string[] = ['name', 'price',  'description', 'edit','delete'];
+  displayedColumns: string[] = ['foodName', 'price',  'description', 'edit','delete'];
   dataSource: MatTableDataSource<Meal>;
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
 
-  constructor(private modalService: ModalService){
-    const meals=[
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"},
-      {name:"abc",price:"200",description:"medium"}
-
+  constructor(private modalService: ModalService,private toastr: ToastrService,private dashboardService: DashboardService){
+    // const meals=[
+    //   {name:"abc",price:"200",description:"medium"},
+    
       
-      
-    ];
+    // ];
+    const meals:any[] | undefined = [];
     this.dataSource = new MatTableDataSource(meals);
-  
 
   }
   ngAfterViewInit(): void {
@@ -65,7 +49,19 @@ export class ViewMealComponent implements OnInit,AfterViewInit{
     this.dataSource.sort = this.sort;   
   }
   ngOnInit(): void {
-    
+
+    this.loadHall()
+  }
+  async loadHall() {
+    this.dashboardService.getAllMeals().subscribe(response =>{
+      console.log(response)
+      if (response != null) {
+        this.dataSource = new MatTableDataSource(response);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+        
+    })
   }
   applyFilter(event: any) {
     const filterValue=event.target.value;
@@ -81,6 +77,20 @@ export class ViewMealComponent implements OnInit,AfterViewInit{
       title: "Add Meal"
 
     });
+  }
+  deleteMeal(id:any){
+    if(window.confirm("Are you sure?")){
+      this.dashboardService.deleteMeals(id).subscribe(response =>{
+        if(response==true){
+          window.location.reload();
+          this.toastr.success("Successfully deleted","Success!");
+        }
+      },(error)=>{
+        console.log(error.error);
+          this.toastr.error('Please fill all the fields carefully','Error');
+          
+      })
+    }
   }
 
   editMeal(meals: Meal) {

@@ -6,9 +6,11 @@ import { MatTableDataSource,MatTableModule  } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';import { MatInputModule } from '@angular/material/input';
+import { ToastrService } from 'ngx-toastr';
+import { DashboardService } from '../../../service/dashboard.service';
 
 interface Hall {
-  name: string,
+  hallName: string,
   price: string,
   chairs: string,
   tables: string
@@ -22,47 +24,38 @@ interface Hall {
   templateUrl: './view-hall.component.html',
   styleUrl: './view-hall.component.css'
 })
-export class ViewHallComponent implements OnInit,AfterViewInit {
-  displayedColumns: string[] = ['name', 'price', 'chairs', 'tables', 'edit','delete'];
+export class ViewHallComponent implements OnInit{
+  displayedColumns: string[] = ['hallName', 'price', 'chairs', 'tables', 'edit','delete'];
   dataSource: MatTableDataSource<Hall>;
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
 
-  constructor(private modalService: ModalService){
-    const halls=[
-      {name:"abc",price:"200",chairs:"4",tables:"3"},
-      {name:"abc",price:"20120",chairs:"4100",tables:"50"},
-      {name:"abc",price:"300000",chairs:"100",tables:"30"},
-      {name:"abc",price:"2012220",chairs:"500",tables:"100"},
-      {name:"abc",price:"200",chairs:"4",tables:"3"},
-      {name:"abc",price:"20120",chairs:"4100",tables:"50"},
-      {name:"abc",price:"300000",chairs:"100",tables:"30"},
-      {name:"abc",price:"2012220",chairs:"500",tables:"100"},
-      {name:"abc",price:"200",chairs:"4",tables:"3"},
-      {name:"abc",price:"20120",chairs:"4100",tables:"50"},
-      {name:"abc",price:"300000",chairs:"100",tables:"30"},
-      {name:"abc",price:"2012220",chairs:"500",tables:"100"},
-      {name:"abc",price:"200",chairs:"4",tables:"3"},
-      {name:"abc",price:"20120",chairs:"4100",tables:"50"},
-      {name:"abc",price:"300000",chairs:"100",tables:"30"},
-      {name:"abc",price:"2012220",chairs:"500",tables:"100"},
-      {name:"abc",price:"200",chairs:"4",tables:"3"},
-      {name:"abc",price:"20120",chairs:"4100",tables:"50"},
-      {name:"abc",price:"300000",chairs:"100",tables:"30"},
-      {name:"abc",price:"2012220",chairs:"500",tables:"100"}
+  constructor(private modalService: ModalService,private toastr: ToastrService,private dashboardService: DashboardService){
+    // const halls=[
+    //   {name:"abc",price:"200",chairs:"4",tables:"3"},
       
-    ];
+      
+    // ];
+    const halls:any[] | undefined = [];
     this.dataSource = new MatTableDataSource(halls);
   
 
   }
-  ngAfterViewInit(): void {
-   
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;   
-  }
+  
   ngOnInit() {
+    this.loadHall();
+  }
+  async loadHall() {
+    this.dashboardService.getAllHalls().subscribe(response =>{
+      console.log(response)
+      if (response != null) {
+        this.dataSource = new MatTableDataSource(response);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+        
+    })
   }
 
   addHall(){
@@ -70,6 +63,21 @@ export class ViewHallComponent implements OnInit,AfterViewInit {
       title:"Create Hall"
     
     });
+  }
+
+  deleteHall(id:any){
+    if(window.confirm("Are you sure?")){
+      this.dashboardService.deleteHalls(id).subscribe(response =>{
+        if(response==true){
+          window.location.reload();
+          this.toastr.success("Successfully deleted","Success!");
+        }
+      },(error)=>{
+        console.log(error.error);
+          this.toastr.error('Please fill all the fields carefully','Error');
+          
+      })
+    }
   }
 
   applyFilter(event: any) {

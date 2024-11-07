@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { ActivatedRouteSnapshot, CanActivateFn, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,24 +10,38 @@ export class AuthServiceService {
   isLogin = false;
 
   roleAs!: string | "";
+  hostUrl: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient) {
+    this.hostUrl = "http://localhost:8080"
+  }
 
-  
-  login(username: string, password: string) {
+
+  navigate(role: string) {
     this.isLogin = true;
-    if (username == "admin") {
+    this.roleAs = role;
+    if (role == "Admin") {
       window.localStorage.setItem("STATE", "true");
-      window.localStorage.setItem("ROLE", "Admin")
-      this.roleAs = "Admin";
+      window.localStorage.setItem("ROLE", role)
       this.router.navigate(['/admin/dashboard']);
-    } else if (username == "reception") {
+    } else if (role == "Receptionist") {
       window.localStorage.setItem("STATE", "true");
-      window.localStorage.setItem("ROLE", "Reception")
-      this.roleAs = "Reception";
+      window.localStorage.setItem("ROLE", role)
       this.router.navigate(['/admin/view-room']);
+    } else if (role == "Chef") {
+      window.localStorage.setItem("STATE", "true");
+      window.localStorage.setItem("ROLE", role)
+      this.router.navigate(['/admin/view-meal']);
+    } else if (role == "Room Boy") {
+      window.localStorage.setItem("STATE", "true");
+      window.localStorage.setItem("ROLE", role)
+      this.router.navigate(['/admin/view-meal']);
     }
     // return of({ success: this.isLogin, role: this.roleAs });
+  }
+
+  public staffLogin(staff: any) {
+    return this.http.post<any>(this.hostUrl + "/api/login/staff", staff);
   }
 
   logout() {

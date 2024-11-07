@@ -45,8 +45,12 @@ export class SideNavComponent implements OnInit{
       this.canAccessStaff=true;
       this.canAccessOrder=true;
       this.canAccessCustomer=true;
-    }else if(currentRole=="Reception"){
+    }else if(currentRole=="Receptionist"){
       this.canAccessRoom=true;
+    }else if(currentRole=="Chef"){
+      this.canAccessMeals=true;
+    }else if(currentRole=="Room Boy"){
+      this.canAccessMeals=true;
     }
   }
   signOut(){

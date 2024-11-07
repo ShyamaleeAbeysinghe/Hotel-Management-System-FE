@@ -27,20 +27,32 @@ export const routes: Routes = [
     component:ViewRoomComponent,
     canActivate: [authGuard],
     data: {
-      roles:['Admin','Reception']
+      roles:['Admin','Receptionist']
     }
 },
 {
     path:"admin/view-hall",
-    component:ViewHallComponent
+    component:ViewHallComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Admin']
+    }
 },
 {
     path:"admin/view-staff",
-    component:ViewStaffComponent
+    component:ViewStaffComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Admin']
+    }
 },
 {
     path:"admin/view-meal",
-    component:ViewMealComponent
+    component:ViewMealComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Admin','Chef','Room Boy']
+    }
 },
 {
     path:"admin/login",
@@ -48,6 +60,10 @@ export const routes: Routes = [
 },
 {
     path:"admin/view-customer",
-    component:ViewCustomerComponent
+    component:ViewCustomerComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Admin']
+    }
 }
 ];

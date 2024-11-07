@@ -1,26 +1,30 @@
 <div class="col">
+  <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+  ></ngx-loading>
   <div class="card shadow-sm col-lg-4 col-md-6 col-sm-12">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div *ngIf="url">
         <img [src]="url" alt="Upload room image" class="roomImg">
       </div>
-      <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-        <div *ngIf="f['name'].errors['required']">Username is required</div>
+      <input type="file" accept="image/jpg" (change)="addFile($event)" [ngClass]="{ 'is-invalid': submitted && f['img'].errors }" >
+      <div *ngIf="submitted && f['img'].errors" class="invalid-feedback">
+        <div *ngIf="f['img'].errors['required']">Image is required</div>
       </div>
-      <input type="file" accept="image/jpg" (change)="addFile($event)">
       <div class="card-body">
         <div class="mb-3">
           <label class="form-label">Room Name</label>
-          <input type="text" formControlName="name" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
-          <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-            <div *ngIf="f['name'].errors['required']">Room Name is required</div>
+          <input type="text" formControlName="roomName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['roomName'].errors }" />
+          <div *ngIf="submitted && f['roomName'].errors" class="invalid-feedback">
+            <div *ngIf="f['roomName'].errors['required']">Room Name is required</div>
           </div>
         </div>
         
         <div class="mb-3">
           <label class="form-label">Room Number</label>
-          <input type="text" formControlName="roomNo" class="form-control"
+          <input type="number" formControlName="roomNo" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f['roomNo'].errors }" />
           <div *ngIf="submitted && f['roomNo'].errors" class="invalid-feedback">
             <div *ngIf="f['roomNo'].errors['required']">Room Number is required</div>
@@ -47,7 +51,7 @@
 
         <div class="mb-3">
           <label class="form-label">Beds</label>
-          <input type="text" formControlName="beds" class="form-control"
+          <input type="number" formControlName="beds" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f['beds'].errors }" />
           <div *ngIf="submitted && f['beds'].errors" class="invalid-feedback">
             <div *ngIf="f['beds'].errors['required']">Beds is required</div>
@@ -56,7 +60,7 @@
 
         <div class="mb-3">
           <label class="form-label">Room Price</label>
-          <input type="text" formControlName="price" class="form-control"
+          <input type="number" formControlName="price" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f['price'].errors }" />
           <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
             <div *ngIf="f['price'].errors['required']">Room Price is required</div>
@@ -92,7 +96,7 @@
 
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
-            <button class="btn btnView">Save</button>
+            <button  class="btn btn-primary">Save</button>
             <button type="button" class="btn btnEdit">Cancel</button>
 
           </div>

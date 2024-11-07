@@ -26,32 +26,20 @@ interface Customer {
 })
 export class ViewCustomerComponent implements OnInit,AfterViewInit{
 
-  displayedColumns: string[] = ['name', 'age', 'address', 'contact','email', 'edit','delete'];
+  displayedColumns: string[] = ['name', 'age', 'address', 'contact','email', 'delete'];
   dataSource: MatTableDataSource<Customer>;
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
 
   constructor(private modalService: ModalService){
-    const customer=[
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
-      {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"}
+    // const customer=[
+    //   {name:"abc",age:"200",address:"eeeeee345",contact:"3454646",email:"wwwwwwww"},
+
       
       
-    ];
+    // ];
+    const customer:any[] | undefined = [];
     this.dataSource = new MatTableDataSource(customer);
   
 

@@ -1,20 +1,29 @@
 
-<div class="container">
-    <div class="col">
+<div class="row">
+   
+    <div class="col-lg-6 col-sm-12">
         <div class="card">
-            <h4 class="card-header">Login</h4>
+            <h2 class="card-header text-center">Login</h2>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <div class="card-body">
                 <form [formGroup]="form" (ngSubmit)="onSubmit()">
                     <div class="mb-3">
-                        <label class="form-label">Username</label>
+                        <label class="form-label"><b>Username</b></label>
                         <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" />
                         <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
                             <div *ngIf="f['username'].errors['required']">Username is required</div>
                         </div>
                     </div>
+                    
                     <div class="mb-3 " >
                         
-                        <label class="form-label">Password</label>
+                        <label class="form-label"><b>Password</b></label>
                         <input type="{{(showPassword === false)?'password':'text'}}" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" >
                         <mat-icon matSuffix style="cursor: pointer;" (click)="toggleShowPassword()">
                             {{!showPassword?'visibility':'visibility_off'}}</mat-icon>
@@ -23,8 +32,13 @@
                             <div *ngIf="f['password'].errors['pattern']">Incorrect password</div>
                         </div>
                     </div>
-                    <div>
-                        <button [disabled]="loading" class="btn btn-primary">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    
+                    <div class="card-footer d-flex">
+                        <button [disabled]="loading" class="btn btnLogin mx-auto">
                             <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
                             Login
                         </button>
@@ -33,6 +47,10 @@
             </div>
         </div>
     </div>
-    <div class="col"></div>
+    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+        <div class="position-relative h-100">
+            <img class="img-fluid position-absolute w-100 h-100" src="../../../../assets/img/Hall/Hall03.jpg">
+        </div>
+    </div>
 </div>
 

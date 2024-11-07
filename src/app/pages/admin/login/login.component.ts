@@ -4,13 +4,13 @@ import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } 
 import { first } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { AuthServiceService } from '../../../service/auth-service.service';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
     selector: 'app-login',
     standalone: true,
-    imports: [CommonModule, FormsModule, ReactiveFormsModule,MatIconModule,MatFormFieldModule],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, MatIconModule, MatFormFieldModule],
     templateUrl: './login.component.html',
     styleUrl: './login.component.css'
 })
@@ -30,7 +30,7 @@ export class LoginComponent {
     ngOnInit() {
         this.form = this.formBuilder.group({
             username: ['', Validators.required],
-            password: ['', [Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]]
+            password: ['', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]]
         });
     }
 
@@ -49,12 +49,23 @@ export class LoginComponent {
         this.loading = true;
         console.log(this.f['username'].value);
         console.log(this.f['password'].value);
-        this.authservice.login(this.f['username'].value,this.f['password'].value)
-        
-        
+        // this.authservice.login(this.f['username'].value,this.f['password'].value)
+        let request = {
+            username: this.f['username'].value,
+            password: this.f['password'].value
+        }
+        this.authservice.staffLogin(request).subscribe(response => {
+            console.log(response.status)
+            if (response.status == "success") {
+                let role = response.role;
+                this.authservice.navigate(role);
+            }
+        })
+
+
     }
 
-    toggleShowPassword(){
+    toggleShowPassword() {
         this.showPassword = !this.showPassword;
     }
 }

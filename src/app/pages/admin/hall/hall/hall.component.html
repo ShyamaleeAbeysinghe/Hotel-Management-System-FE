@@ -1,27 +1,32 @@
 <div class="col">
+  <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+  ></ngx-loading>
   <div class="card shadow-sm col-lg-4 col-md-6 col-sm-12">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div *ngIf="url">
         <img [src]="url" alt="Upload hall image" class="hallImg">
       </div>
-      <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-        <div *ngIf="f['name'].errors['required']">Username is required</div>
+      
+      <input type="file" accept="image/jpg" (change)="addFile($event)" [ngClass]="{ 'is-invalid': submitted && f['img'].errors }">
+      <div *ngIf="submitted && f['img'].errors" class="invalid-feedback">
+        <div *ngIf="f['img'].errors['required']">Image is required</div>
       </div>
-      <input type="file" accept="image/jpg" (change)="addFile($event)">
       <div class="card-body">
         <div class="mb-3">
           <label class="form-label">Hall Name</label>
-          <input type="text" formControlName="name" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
-          <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-            <div *ngIf="f['name'].errors['required']">Hall Name is required</div>
+          <input type="text" formControlName="hallName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['hallName'].errors }" />
+          <div *ngIf="submitted && f['hallName'].errors" class="invalid-feedback">
+            <div *ngIf="f['hallName'].errors['required']">Hall Name is required</div>
           </div>
         </div>
         
         <div class="mb-3">
           <label class="form-label">Price</label>
-          <input type="text" formControlName="price" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f['roomNo'].errors }" />
+          <input type="number" formControlName="price" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['price'].errors }" />
           <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
             <div *ngIf="f['price'].errors['required']">Price is required</div>
           </div>
@@ -29,7 +34,7 @@
 
         <div class="mb-3">
           <label class="form-label">Chairs</label>
-          <input type="text" formControlName="description" class="form-control"
+          <input type="number" formControlName="chairs" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f['chairs'].errors }" />
           <div *ngIf="submitted && f['chairs'].errors" class="invalid-feedback">
             <div *ngIf="f['chairs'].errors['required']">Chairs is required</div>
@@ -38,7 +43,7 @@
 
         <div class="mb-3">
           <label class="form-label">Tables</label>
-          <input type="text" formControlName="size" class="form-control"
+          <input type="number" formControlName="tables" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f['tables'].errors }" />
           <div *ngIf="submitted && f['tables'].errors" class="invalid-feedback">
             <div *ngIf="f['tables'].errors['required']">Tables  is required</div>
@@ -74,7 +79,7 @@
 
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
-            <button class="btn btnView">Save</button>
+            <button class="btn btnView" >Save</button>
             <button type="button" class="btn btnEdit">Cancel</button>
 
           </div>
