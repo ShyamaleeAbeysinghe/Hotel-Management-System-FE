@@ -37,4 +37,16 @@ export class CustomerService {
   public getAllRoomBookings() {
     return this.http.get<any>(this.hostUrl+"/api/room-booking/getAll");
   }
+
+  public getAllHallBookings() {
+    return this.http.get<any>(this.hostUrl+"/api/hall-booking/getAll");
+  }
+
+  public cancelRoomBooking(bookingId:number) {
+    return this.http.post<any>(this.hostUrl+"/api/room-booking/cancelBooking/"+bookingId,null);
+  }
+
+  public cancelHallBooking(bookingId:number) {
+    return this.http.post<any>(this.hostUrl+"/api/hall-booking/cancelBooking/"+bookingId,null);
+  }
 }

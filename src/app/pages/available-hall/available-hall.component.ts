@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CustomerService } from '../../service/customer.service';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'app-available-hall',
@@ -14,7 +15,8 @@ export class AvailableHallComponent implements OnInit{
   @Input() public dateCriteria:any;
   halls:any;
   public loading = false;
-  constructor(private customerService: CustomerService,private toastr: ToastrService){
+  constructor(private customerService: CustomerService,private toastr: ToastrService,
+    private confirmationDialogService: ConfirmationDialogService){
 
   }
   ngOnInit(): void {
@@ -26,11 +28,23 @@ export class AvailableHallComponent implements OnInit{
   });
   }
 
+  confirm(room: any) {
+    this.confirmationDialogService.confirm('Please confirm..', "You can't cancel the booking within 7 days of the booking date. Do you like to proceed?")
+      .then((confirmed) => {
+        if(confirmed){
+          this.bookNow(room);
+        }
+      })
+      .catch(() => console.log('User dismissed the dialog '));
+
+
+  }
+
   bookNow(hall:any){
     let hallBoking={
       hallId:hall.id,
       customerId:window.localStorage.getItem("user"),
-      date:this.dateCriteria.bookingDate
+      bookedDate:this.dateCriteria.bookingDate
     }
     this.customerService.saveHallBooking(hallBoking).subscribe(response=>{
       if(response=="CREATED"){

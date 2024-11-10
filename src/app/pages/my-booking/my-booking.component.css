@@ -4,6 +4,10 @@
 .room{
     color: #121a01;
     font-style: italic;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
 .room-booking{
   margin-bottom: 30px;
@@ -20,6 +24,10 @@
     color: #121a01;
     font-style: italic;
     font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
 .hall-booking{
   margin-bottom: 30px;
@@ -36,9 +44,20 @@
     color: #FFFFFF;
     background-color: #01200de3 !important;
     border-color: #01200de3 !important;
+    float: right;
 }
 .btnEdit{
     color: #FFFFFF;
     background-color: #01200de3 !important;
     border-color: #01200de3 !important;
+}
+
+.card{
+    padding: 8px;
+}
+
+.booked-heading{
+    height: 50px;
+    width: 100vW;
+    background-color: #0df164e3;
 }

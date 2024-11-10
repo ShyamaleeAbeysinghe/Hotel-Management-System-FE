@@ -5,6 +5,7 @@ import { Payhere, AccountCategory, Customer, CurrencyType, PayhereCheckout, Chec
 import md5 from 'crypto-js/md5';
 import { error } from 'jquery';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'app-available-rooms',
@@ -18,7 +19,8 @@ export class AvailableRoomsComponent implements OnInit {
   rooms: any;
   md5Key: any;
   public loading = false;
-  constructor(private customerService: CustomerService,private toastr: ToastrService) {
+  constructor(private customerService: CustomerService, private toastr: ToastrService,
+    private confirmationDialogService: ConfirmationDialogService) {
 
   }
   ngOnInit(): void {
@@ -37,31 +39,43 @@ export class AvailableRoomsComponent implements OnInit {
     console.log(this.md5Key)
   }
 
-  bookNow(room:any){
-    let roomBoking={
-      roomId:room.id,
+  confirm(room: any) {
+    this.confirmationDialogService.confirm('Please confirm..', "You can't cancel the booking within 7 days of the booking date. Do you like to proceed?")
+      .then((confirmed) => {
+        if (confirmed) {
+          this.bookNow(room);
+        }
+      })
+      .catch(() => console.log('User dismissed the dialog '));
+
+
+  }
+
+  bookNow(room: any) {
+    let roomBoking = {
+      roomId: room.id,
       customerId: window.localStorage.getItem("user"),
-      checkIn:this.dateCriteria.start,
-      checkOut:this.dateCriteria.end
+      checkIn: this.dateCriteria.start,
+      checkOut: this.dateCriteria.end
     }
-    this.customerService.saveRoomBooking(roomBoking).subscribe(response=>{
-      if(response=="CREATED"){
+    this.customerService.saveRoomBooking(roomBoking).subscribe(response => {
+      if (response == "CREATED") {
         this.customerService.getAvailableRooms(this.dateCriteria.start, this.dateCriteria.end).subscribe(response => {
           if (response != null) {
             this.rooms = response;
           }
         });
-        
+
         this.toastr.success('Room Booked', 'Success!');
-        this.loading=false;
-      }else{
-        this.toastr.error('Failed to save booking','Error');
-        this.loading=false;
+        this.loading = false;
+      } else {
+        this.toastr.error('Failed to save booking', 'Error');
+        this.loading = false;
       }
-    },(error)=>{
+    }, (error) => {
       console.log(error.error);
-        this.toastr.error('Please fill all the fields carefully','Error');
-        this.loading=false;
+      this.toastr.error('Please fill all the fields carefully', 'Error');
+      this.loading = false;
     })
   }
 
