@@ -10,6 +10,8 @@ import { authGuard } from './auth.guard';
 import { ViewCustomerComponent } from './pages/admin/view-customer/view-customer.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { CustomerLoginComponent } from './pages/customer-login/customer-login.component';
+import { HomeComponent } from './pages/home/home.component';
+import { MyBookingComponent } from './pages/my-booking/my-booking.component';
 
 export const routes: Routes = [
 {
@@ -19,10 +21,6 @@ export const routes: Routes = [
     data: {
       roles: ['Admin']
     }
-},
-{
-    path:"home",
-    component:HeaderComponent
 },
 {
     path:"admin/view-room",
@@ -75,5 +73,13 @@ export const routes: Routes = [
 {
     path:"signin",
     component:CustomerLoginComponent
+},
+{
+    path:"home",
+    component:HomeComponent
+},
+{
+    path:"booking",
+    component:MyBookingComponent
 }
 ];

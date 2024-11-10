@@ -1,0 +1,90 @@
+<app-header></app-header>
+<div class="container-fluid bg-primary py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row justify-content-center py-5">
+            <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                <h1 class="display-3 text-white mb-3 animated slideInDown"><b>Enjoy Your Event Or Special Day With
+                        Us</b></h1>
+                <p class="fs-4 text-white mb-4 animated slideInDown">Find Your Home Away From Home: Simple Bookings,
+                    Memorable Stays!</p>
+                <div class="position-relative w-75 mx-auto animated slideInDown">
+                    <!-- Search Section Start -->
+                     
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div id="search">
+                            <div class="container">
+                                <div class="row">
+                                        <div class="control-group col-md-3">
+                                            <label>Type</label>
+                                            <br>
+                                            <select formControlName="searchType" class="custom-select form-control" (change)="changeSerachType()"
+                                            [ngClass]="{ 'is-invalid': submitted && f['searchType'].errors }">
+                                                <option value="room" selected>Room</option>
+                                                <option value="hall">Hall</option>
+
+                                            </select>
+                                            <div *ngIf="submitted && f['searchType'].errors" class="invalid-feedback">
+                                                <div *ngIf="f['searchType'].errors['required']">Type is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="control-group col-md-3"  *ngIf="isSearchRoom">
+                                            <label>Check-In</label>
+                                            <div class="form-group">
+                                                <div class="input-group date" id="date-3"
+                                                    data-target-input="nearest">
+                                                    <input id="startDate" formControlName="startDate" class="form-control" type="date"
+                                                    [min]="todayDate" [ngClass]="{ 'is-invalid': submitted && f['startDate'].errors }"/>
+                                                    <div *ngIf="submitted && f['startDate'].errors" class="invalid-feedback">
+                                                        <div *ngIf="f['startDate'].errors['required']">Check in date is required</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="control-group col-md-3"  *ngIf="isSearchRoom">
+                                            <label>Check-Out</label>
+                                            <div class="form-group">
+                                                <div class="input-group date" id="date-4"
+                                                    data-target-input="nearest">
+                                                    <input id="endDate" formControlName="endDate" class="form-control" type="date" 
+                                                    [min]="todayDate" [ngClass]="{ 'is-invalid': submitted && f['endDate'].errors }"/>
+                                                    <div *ngIf="submitted && f['endDate'].errors" class="invalid-feedback">
+                                                        <div *ngIf="f['endDate'].errors['required']">Checkout date is required</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="control-group col-md-3" *ngIf="!isSearchRoom">
+                                            <label>Booking Date</label>
+                                            <div class="form-group">
+                                                <div class="input-group date" id="date-3"
+                                                    data-target-input="nearest">
+                                                    <input id="bookingDate" formControlName="bookingDate" class="form-control" type="date"
+                                                    [min]="todayDate"  [ngClass]="{ 'is-invalid': submitted && f['bookingDate'].errors }"/>
+                                                    <div *ngIf="submitted && f['bookingDate'].errors" class="invalid-feedback">
+                                                        <div *ngIf="f['bookingDate'].errors['required']">Booking Date is required</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="control-group col-md-2">
+                                            <button class="btn btn-block">Search</button>
+                                        </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                    <!-- Search Section End -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-dashboard *ngIf="isNothingSelected"></app-dashboard>
+<app-available-rooms *ngIf="isRoomSelected" [dateCriteria]="dateCriteria"></app-available-rooms>
+<app-available-hall *ngIf="isHallSelected" [dateCriteria]="dateCriteria"></app-available-hall>

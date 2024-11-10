@@ -1,18 +1,18 @@
-<div class="container">
-  <div class="row">
-    <h1 class="topic text-center"><b>My Booking</b></h1>
+<app-header></app-header>
+<div class="container-fluid bg-secondary py-5 mb-5">
+  <div class="row py-5">
     <div class="room-booking">
-      <h3 class="room"><b>Room</b></h3>
-      <div class="col">
-        <div class="card shadow-sm col-lg-4 col-md-6 col-sm-12">
+      <h3 class="room py-2"><b>Room</b></h3>
+      <div class="row">
+        <div class="card shadow-sm col-lg-4 col-md-6 col-sm-12 px-2" *ngFor="let booking of bookings">
 
           <img src="../../../assets/img/room/room-1.jpg">
           <div class="card-body">
 
             <table class="roomTable ">
               <tr>
-                <td><label class="roomDetail">Type -></label></td>
-                <td><label class="roomDetail01">Room</label></td>
+                <td><label class="roomDetail">Room Name -></label></td>
+                <td><label class="roomDetail01">Standard Single</label></td>
               </tr>
               <tr>
                 <td><label class="roomDetail">Checkin Date -></label></td>
@@ -23,12 +23,12 @@
                 <td><label class="roomDetail01">2024-10-18</label></td>
               </tr>
               <tr>
-                <td><label class="roomDetail">Room Name -></label></td>
-                <td><label class="roomDetail01">Standard Single</label></td>
+                <td><label class="roomDetail">Room Number -></label></td>
+                <td><label class="roomDetail01">123</label></td>
               </tr>
               <tr>
                 <td><label class="roomDetail">Price -></label></td>
-                <td><label class="roomDetail01">$150</label></td>
+                <td><label class="roomDetail01">LKR. 150</label></td>
               </tr>
             </table>
 

@@ -56,6 +56,7 @@ export class CustomerLoginComponent {
         this.authservice.customerLogin(request).subscribe(response => {
           if (response.status == "success") {
             console.log("response received");
+            window.localStorage.setItem("user", response.user);
             this.router.navigate(['/home']);
         }else{
           console.log("incorrect credintials")

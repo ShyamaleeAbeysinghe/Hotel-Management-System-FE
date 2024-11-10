@@ -17,10 +17,24 @@ export class CustomerService {
   public getAvailableRooms(start:any,end:any) {
     return this.http.get<any>(this.hostUrl+"/api/room-booking/get-availableRoom?start="+start+"&end="+end);
   }
+
   public getAllHalls() {
     return this.http.get<any>(this.hostUrl+"/api/hall/get-all");
   }
+
   public getAvailableHalls(bookingDate:any) {
     return this.http.get<any>(this.hostUrl+"/api/hall-booking/get-availableHall?date="+bookingDate);
+  }
+
+  public saveRoomBooking(booking: any) {
+    return this.http.post<any>(this.hostUrl+"/api/room-booking/saveBooking", booking);
+  }
+
+  public saveHallBooking(booking: any) {
+    return this.http.post<any>(this.hostUrl+"/api/hall-booking/saveBooking", booking);
+  }
+
+  public getAllRoomBookings() {
+    return this.http.get<any>(this.hostUrl+"/api/room-booking/getAll");
   }
 }
