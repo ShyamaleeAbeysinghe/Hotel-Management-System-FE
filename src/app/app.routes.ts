@@ -8,6 +8,8 @@ import { ViewMealComponent } from './pages/admin/view-meal/view-meal.component';
 import { LoginComponent } from './pages/admin/login/login.component';
 import { authGuard } from './auth.guard';
 import { ViewCustomerComponent } from './pages/admin/view-customer/view-customer.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { CustomerLoginComponent } from './pages/customer-login/customer-login.component';
 
 export const routes: Routes = [
 {
@@ -19,7 +21,7 @@ export const routes: Routes = [
     }
 },
 {
-    path:"admin/dashboard1",
+    path:"home",
     component:HeaderComponent
 },
 {
@@ -65,5 +67,13 @@ export const routes: Routes = [
     data: {
       roles: ['Admin']
     }
+},
+{
+    path:"signUp",
+    component:SignUpComponent
+},
+{
+    path:"signin",
+    component:CustomerLoginComponent
 }
 ];

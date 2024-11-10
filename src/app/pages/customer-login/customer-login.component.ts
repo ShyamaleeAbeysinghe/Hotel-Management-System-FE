@@ -3,20 +3,19 @@ import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-import { AuthServiceService } from '../../../service/auth-service.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { SignUpComponent } from '../../sign-up/sign-up.component';
+import { AuthServiceService } from '../../service/auth-service.service';
 
 @Component({
-    selector: 'app-login',
-    standalone: true,
-    imports: [CommonModule, FormsModule, ReactiveFormsModule, MatIconModule, MatFormFieldModule,SignUpComponent,RouterModule],
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.css'
+  selector: 'app-customer-login',
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatIconModule, MatFormFieldModule,RouterModule],
+  templateUrl: './customer-login.component.html',
+  styleUrl: './customer-login.component.css'
 })
-export class LoginComponent {
-    form!: FormGroup;
+export class CustomerLoginComponent {
+  form!: FormGroup;
     loading = false;
     submitted = false;
     showPassword: boolean = false;
@@ -48,19 +47,19 @@ export class LoginComponent {
         }
 
         this.loading = true;
-        console.log(this.f['username'].value);
-        console.log(this.f['password'].value);
         // this.authservice.login(this.f['username'].value,this.f['password'].value)
         let request = {
             username: this.f['username'].value,
             password: this.f['password'].value
         }
-        this.authservice.staffLogin(request).subscribe(response => {
-            console.log(response.status)
-            if (response.status == "success") {
-                let role = response.role;
-                this.authservice.navigate(role);
-            }
+
+        this.authservice.customerLogin(request).subscribe(response => {
+          if (response.status == "success") {
+            console.log("response received");
+            this.router.navigate(['/home']);
+        }else{
+          console.log("incorrect credintials")
+        }
         })
 
 

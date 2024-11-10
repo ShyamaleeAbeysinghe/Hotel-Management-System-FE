@@ -24,7 +24,7 @@
 
 .maindiv{
     /* background-size: contain; */
-    background-image: url("../../../../assets/img/hotelLogin.jpg");
+    background-image: url("../../../assets/img/hotelLogin.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;

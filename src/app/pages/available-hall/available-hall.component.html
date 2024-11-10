@@ -9,14 +9,14 @@
             </p>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" *ngFor="let hall of halls">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="room-img">
                             <div class="box12">
-                                <img src="../../../assets/img/Hall/Hall01.jpg">
+                                <img src="{{hall.img}}">
                                 <div class="box-content">
-                                    <h3 class="title">Bare Rose Garden</h3>
+                                    <h3 class="title">{{hall.hallName}}</h3>
                                     <ul class="icon">
                                         <li><a href="#" data-toggle="modal" data-target="#modal-id"><i
                                                     class="fab fa-link"></i></a></li>
@@ -27,12 +27,12 @@
                     </div>
                     <div class="col-md-6">
                         <div class="room-des">
-                            <h3><a href="#" data-toggle="modal" data-target="#modal-id">Bare Rose Garden</a></h3>
+                            <h3><a href="#" data-toggle="modal" data-target="#modal-id">{{hall.hallName}}</a></h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             <ul class="room-size">
-                                <li><i class="fa fa-arrow-right"></i>Size: 260 sq ft </li>
-                                <li><i class="fa fa-arrow-right"></i>Table: 10  </li>
-                                <li><i class="fa fa-arrow-right"></i>Chairs: 50  </li>
+                               
+                                <li><i class="fa fa-arrow-right"></i>Table: +{{hall.chairs}}  </li>
+                                <li><i class="fa fa-arrow-right"></i>Chairs: +{{hall.tables}}  </li>
                             </ul>
                             <ul class="room-icon">
                                 <li class="icon-1"></li>
@@ -46,7 +46,7 @@
                     <div class="col-md-3">
                         <div class="room-rate">
                             <h3>From</h3>
-                            <h1>$150</h1>
+                            <h1>Rs: {{hall.price}}</h1>
                             <a href="#">Book Now</a>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                 <hr>
             </div>
 
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="room-img">
@@ -97,9 +97,9 @@
                     </div>
                 </div>
                 <hr>
-            </div>
+            </div> -->
 
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="room-img">
@@ -142,9 +142,9 @@
                     </div>
                 </div>
                 <hr>
-            </div>
+            </div> -->
 
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="room-img">
@@ -187,9 +187,9 @@
                     </div>
                 </div>
                 <hr>
-            </div>
+            </div> -->
 
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="room-img">
@@ -232,7 +232,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
     </div>

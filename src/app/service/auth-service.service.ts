@@ -44,6 +44,14 @@ export class AuthServiceService {
     return this.http.post<any>(this.hostUrl + "/api/login/staff", staff);
   }
 
+  public customerSignUp(customer: any) {
+    return this.http.post<any>(this.hostUrl + "/api/customer/add", customer);
+  }
+
+  public customerLogin(customer: any) {
+    return this.http.post<any>(this.hostUrl + "/api/login/customer", customer);
+  }
+
   logout() {
     this.isLogin = false;
     this.roleAs = '';

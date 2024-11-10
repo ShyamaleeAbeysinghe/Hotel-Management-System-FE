@@ -9,14 +9,14 @@
             </p>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" *ngFor="let room of rooms">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="room-img">
                             <div class="box12">
-                                <img src="../../../assets/img/room/room-1.jpg">
+                                <img src="{{room.img}}">
                                 <div class="box-content">
-                                    <h3 class="title">Standard Single</h3>
+                                    <h3 class="title">{{room.roomName}}</h3>
                                     <ul class="icon">
                                         <li><a href="#" data-toggle="modal" data-target="#modal-id"><i
                                                     class="fab fa-link"></i></a></li>
@@ -27,11 +27,11 @@
                     </div>
                     <div class="col-md-6">
                         <div class="room-des">
-                            <h3><a href="#" data-toggle="modal" data-target="#modal-id">Standard Single</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <h3><a href="#" data-toggle="modal" data-target="#modal-id">{{room.roomName}}</a></h3>
+                            <p>{{room.description}}</p>
                             <ul class="room-size">
-                                <li><i class="fa fa-arrow-right"></i>Size: 260 sq ft </li>
-                                <li><i class="fa fa-arrow-right"></i>Beds: 2 Single(s) </li>
+                                <li><i class="fa fa-arrow-right"></i>Size: +{{room.size}} </li>
+                                <li><i class="fa fa-arrow-right"></i>Beds: +{{room.beds}} </li>
                             </ul>
                             <ul class="room-icon">
                                 <li class="icon-1"></li>
@@ -50,15 +50,16 @@
                     <div class="col-md-3">
                         <div class="room-rate">
                             <h3>From</h3>
-                            <h1>$150</h1>
+                            <h1>Rs: {{room.price}}</h1>
                             <a href="#">Book Now</a>
+                            <button type="submit" id="payhere-payment">Book Now</button>
                         </div>
                     </div>
                 </div>
                 <hr>
             </div>
 
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="room-img">
@@ -251,7 +252,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
     </div>
