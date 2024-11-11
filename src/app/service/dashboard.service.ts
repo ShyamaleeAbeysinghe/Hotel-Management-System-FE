@@ -83,4 +83,12 @@ export class DashboardService {
   public getRoles() {
     return this.http.get<any>(this.hostUrl+"/api/role/get-all");
   }
+
+  public getAllRoomBookings() {
+    return this.http.get<any>(this.hostUrl+"/api/room-booking/getAllBookings");
+  }
+
+  public checkInRoomBooking(bookingId:number) {
+    return this.http.post<any>(this.hostUrl+"/api/room-booking/checkIn/"+bookingId,null);
+  }
 }

@@ -12,8 +12,22 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { CustomerLoginComponent } from './pages/customer-login/customer-login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MyBookingComponent } from './pages/my-booking/my-booking.component';
+import { ViewRoomBookingComponent } from './pages/admin/view-room-booking/view-room-booking.component';
+import { DiningComponent } from './pages/dining/dining.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 export const routes: Routes = [
+  
+// {
+//   path:"",
+//   redirectTo : '/home' ,
+//   pathMatch : 'full'
+// },
+{
+  path:"admin",
+  redirectTo : '/admin/dashboard' ,
+  pathMatch : 'full'
+},
 {
     path:"admin/dashboard",
     component:DashboardComponent,
@@ -55,6 +69,14 @@ export const routes: Routes = [
     }
 },
 {
+    path:"admin/room=booking",
+    component:ViewRoomBookingComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Admin']
+    }
+},
+{
     path:"admin/login",
     component:LoginComponent
 },
@@ -81,5 +103,13 @@ export const routes: Routes = [
 {
     path:"booking",
     component:MyBookingComponent
+},
+{
+    path:"dining",
+    component:DiningComponent
+},
+{
+    path:"cart",
+    component:CartComponent
 }
 ];

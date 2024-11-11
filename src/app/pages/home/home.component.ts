@@ -6,11 +6,13 @@ import { MyBookingComponent } from '../my-booking/my-booking.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent,DashboardComponent, AvailableRoomsComponent, AvailableHallComponent, CommonModule, ReactiveFormsModule],
+  imports: [HeaderComponent,DashboardComponent, AvailableRoomsComponent, AvailableHallComponent, 
+    CommonModule, ReactiveFormsModule,FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

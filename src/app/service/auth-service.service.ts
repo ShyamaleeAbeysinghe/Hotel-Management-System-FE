@@ -60,6 +60,16 @@ export class AuthServiceService {
     this.router.navigate(['/admin/login']);
   }
 
+  customerLogout(){
+    this.isLogin = false;
+    this.roleAs = '';
+    localStorage.setItem('STATE', 'false');
+    localStorage.setItem('ROLE', '');
+    localStorage.setItem('user', '');
+    localStorage.setItem('food', '');
+    this.router.navigate(['/signin']);
+  }
+
   isLoggedIn() {
     const loggedIn = localStorage.getItem('STATE');
     if (loggedIn == 'true')
@@ -72,5 +82,9 @@ export class AuthServiceService {
   getRole() {
     this.roleAs = localStorage.getItem('ROLE') || "";
     return this.roleAs;
+  }
+
+  getCustomerDetails(userId:any){
+    return this.http.get<any>(this.hostUrl + "/api/customer/search-by-id/"+userId);
   }
 }

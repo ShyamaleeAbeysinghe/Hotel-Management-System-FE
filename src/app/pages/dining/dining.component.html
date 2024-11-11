@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div class="container-fluid bg-secondary py-5 mb-5">
+    <div class="row py-5">
+        <div class="diningarea">
+
+            <!-- <div class="booked-heading d-flex align-items-center">
+                <h3 class="room py-2"><b>My Booked Rooms</b></h3>
+            </div> -->
+            <div>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" [class.active]="isActiveFoods" aria-current="page" (click)="getFoods()">Order
+                            Foods From Resturant</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [class.active]="isActiveOrders" (click)="getMyOrders()">My Orders</a>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="isActiveFoods">
+                <div *ngIf="!isFoodsAvailable">
+                    <div class="panel panel-default">
+                        <div class="panel-body">This section avaible only when you booked room and checked in</div>
+                    </div>
+                </div>
+                <div *ngIf="isFoodsAvailable">
+                    <div class="row">
+                        <div class="card shadow-sm col-lg-2 col-md-2 col-sm-4 col-6 px-2" *ngFor="let food of foods">
+                            <img [src]="food.img" class="diningImg">
+
+                            <div class="card-body">
+                                <table>
+                                    <tr>
+                                        <td><label class="hallDetail01">{{food.foodName}}</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="hallDetail01">LKR. {{food.price}}</label></td>
+                                    </tr>
+                                    <tr>
+                                        <!-- <td><label class="hallDetail01">fdgdsg</label></td> -->
+                                        <td><small>{{food.description}}</small></td>
+                                    </tr>
+                                </table>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button type="button" class="btn btnView" (click)="addtoCart(food)">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div *ngIf="isActiveOrders">
+                food here
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<app-footer></app-footer>

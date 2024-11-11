@@ -1,5 +1,5 @@
 <!-- Topbar Start -->
-<div class="container-fluid bg-dark px-5 d-none d-lg-block">
+<!-- <div class="container-fluid bg-dark px-5 d-none d-lg-block">
     <div class="row gx-0">
         <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
             <div class="d-inline-flex align-items-center" style="height: 45px;">
@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Topbar End -->
 
 
@@ -43,25 +43,30 @@
             <div class="navbar-nav ms-auto py-0">
                 <a [routerLink]="['/home']" [routerLinkActive]="['active']" class="nav-item nav-link">Home</a>
                 <a [routerLink]="['/booking']" [routerLinkActive]="['active']" class="nav-item nav-link">My Bookings</a>
-                <a href="service.html" class="nav-item nav-link">Dining Selection</a>
-                <a href="package.html" class="nav-item nav-link">Packages</a>
+                <a [routerLink]="['/dining']" [routerLinkActive]="['active']" class="nav-item nav-link">Dining
+                    Selection</a>
+                <a [routerLink]="['/cart']" [routerLinkActive]="['active']" class="nav-item nav-link">Cart</a>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30"
+                            class="rounded-circle">
+                        <span class="d-none d-sm-inline mx-1 admin">{{customerName}}</span>
+                    </a>
                     <div class="dropdown-menu m-0">
-                        <a href="destination.html" class="dropdown-item">Destination</a>
-                        <a href="booking.html" class="dropdown-item">Booking</a>
-                        <a href="team.html" class="dropdown-item">Travel Guides</a>
+                        <a class="dropdown-item">Profile</a>
+                        <a class="dropdown-item" (click)="logout()">Logout</a>
+                        <!-- <a href="team.html" class="dropdown-item">Travel Guides</a>
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
+                        <a href="404.html" class="dropdown-item">404 Page</a> -->
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
             </div>
-            <a href="" class="btn btn-primary rounded-pill py-2 px-4">Register</a>
+            <!-- <a href="" class="btn btn-primary rounded-pill py-2 px-4">Register</a> -->
         </div>
     </nav>
 
-    
+
 </div>
 <!-- Navbar & Hero End -->
 <!-- <app-my-booking></app-my-booking> -->

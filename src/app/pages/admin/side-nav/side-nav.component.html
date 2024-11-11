@@ -16,7 +16,7 @@
 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 
     <li *ngIf="canAccessDashboard">
-        <a [routerLink]="['/admin/dashboard']"  class="nav-link px-0 align-middle">
+        <a [routerLink]="['/admin/dashboard']" class="nav-link px-0 align-middle">
             <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
 
     </li>
@@ -24,40 +24,50 @@
         <a [routerLink]="['/admin/view-room']" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
             <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Rooms</span>
         </a>
-        
+
     </li>
     <li *ngIf="canAccessHall">
         <a [routerLink]="['/admin/view-hall']" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
             <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Event Hall</span>
         </a>
-       
+
     </li>
     <li *ngIf="canAccessMeals">
         <a [routerLink]="['/admin/view-meal']" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Meals</span> 
+            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Meals</span>
         </a>
-        
+
     </li>
     <li *ngIf="canAccessStaff">
         <a [routerLink]="['/admin/view-staff']" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Staff</span> 
+            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Staff</span>
         </a>
-        
+
     </li>
 
     <li *ngIf="canAccessCustomer">
         <a [routerLink]="['/admin/view-customer']" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
             <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customer</span>
         </a>
-        
+
     </li>
 
-    <li *ngIf="canAccessOrder">
-        <a href="#submenu5" class="nav-link px-0 align-middle">
-            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">View Order</span> </a>
-        <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
-            
+    <li *ngIf="canAccessBooking">
+        <a href="#" class=" dropdown-toggle nav-link px-0 align-middle" id="booking" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Booking</span> </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
 
+            <li>
+                <a [routerLink]="['/admin/room=booking']" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                     <span class="ms-1 d-none d-sm-inline">Room Booking</span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['/admin/room=booking']" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                    <span class="ms-1 d-none d-sm-inline">Hall Booking</span>
+               </a>
+            </li>
         </ul>
     </li>
 </ul>
@@ -69,7 +79,7 @@
         <span class="d-none d-sm-inline mx-1 admin">Admin</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-       
+
         <li><a class="dropdown-item admin" href="#">Profile</a></li>
         <li>
             <hr class="dropdown-divider">

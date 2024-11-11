@@ -1,0 +1,18 @@
+.diningarea{
+    margin-top: 5vh;;
+}
+
+.btn-order{
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.checkoutArea{
+    float: right;
+    margin-top: 5vh;;
+}
+
+.total{
+    font-size: 24px;
+    font-weight: bold;
+}

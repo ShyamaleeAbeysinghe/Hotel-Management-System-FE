@@ -34,12 +34,12 @@ export class CustomerService {
     return this.http.post<any>(this.hostUrl+"/api/hall-booking/saveBooking", booking);
   }
 
-  public getAllRoomBookings() {
-    return this.http.get<any>(this.hostUrl+"/api/room-booking/getAll");
+  public getAllRoomBookings(user:any) {
+    return this.http.get<any>(this.hostUrl+"/api/room-booking/getAll?userId="+user);
   }
 
-  public getAllHallBookings() {
-    return this.http.get<any>(this.hostUrl+"/api/hall-booking/getAll");
+  public getAllHallBookings(user:any) {
+    return this.http.get<any>(this.hostUrl+"/api/hall-booking/getAll?userId="+user);
   }
 
   public cancelRoomBooking(bookingId:number) {
@@ -48,5 +48,17 @@ export class CustomerService {
 
   public cancelHallBooking(bookingId:number) {
     return this.http.post<any>(this.hostUrl+"/api/hall-booking/cancelBooking/"+bookingId,null);
+  }
+
+  public getAllResturantMenu() {
+    return this.http.get<any>(this.hostUrl+"/api/resturentMenu/get-all");
+  }
+
+  public isCustomerCheckedIn(user:any) {
+    return this.http.get<any>(this.hostUrl+"/api/room-booking/isCustomerCheckedIn/"+user);
+  }
+
+  public placeOrder(order: any) {
+    return this.http.post<any>(this.hostUrl+"/api/order/add-order", order);
   }
 }

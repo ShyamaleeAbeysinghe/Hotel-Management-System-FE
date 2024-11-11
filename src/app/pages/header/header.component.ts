@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, OnInit, ElementRef } from '@angular/core';
 import * as $ from 'jquery';
 import {RouterModule} from '@angular/router';
+import { AuthServiceService } from '../../service/auth-service.service';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +11,18 @@ import {RouterModule} from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements AfterViewInit, OnInit {
-  constructor(private navbar: ElementRef){
+  customerName:string="";
+  constructor(private navbar: ElementRef,private authService:AuthServiceService){
 
   }
   
   ngOnInit(): void {
-    window.addEventListener('scroll', this.scroll, true); //third parameter
+    window.addEventListener('scroll', this.scroll, true); 
+    this.authService.getCustomerDetails(localStorage.getItem("user")).subscribe(response=>{
+      this.customerName=response.customerName;
+    },(error)=>{
+      console.log("Error while getting customer data")
+    })
   }
 
   scroll = (event: any): void => {
@@ -35,6 +42,10 @@ export class HeaderComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit(): void {
 
+  }
+
+  logout(){
+    this.authService.customerLogout();
   }
   
 

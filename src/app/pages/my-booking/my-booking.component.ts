@@ -4,11 +4,12 @@ import { CustomerService } from '../../service/customer.service';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-my-booking',
   standalone: true,
-  imports: [HeaderComponent,CommonModule],
+  imports: [HeaderComponent,CommonModule,FooterComponent],
   templateUrl: './my-booking.component.html',
   styleUrl: './my-booking.component.css'
 })
@@ -21,11 +22,11 @@ export class MyBookingComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.customerService.getAllRoomBookings().subscribe(response=>{
+    this.customerService.getAllRoomBookings(window.localStorage.getItem("user")).subscribe(response=>{
       this.bookingRooms=response;
     })
     
-    this.customerService.getAllHallBookings().subscribe(response=>{
+    this.customerService.getAllHallBookings(window.localStorage.getItem("user")).subscribe(response=>{
       this.bookingHalls=response;
     })
   }
@@ -50,7 +51,7 @@ export class MyBookingComponent implements OnInit{
         this.toastr.warning("You can't cancel this booking","Warning")
       }else if(response=="ACCEPTED"){
         this.toastr.success("Cancelled Booking successfully","Success")
-        this.customerService.getAllRoomBookings().subscribe(response=>{
+        this.customerService.getAllRoomBookings(window.localStorage.getItem("user")).subscribe(response=>{
           this.bookingRooms=response;
         })
       }else{
@@ -67,7 +68,7 @@ export class MyBookingComponent implements OnInit{
         this.toastr.warning("You can't cancel this booking","Warning")
       }else if(response=="ACCEPTED"){
         this.toastr.success("Cancelled Booking successfully","Success")
-        this.customerService.getAllHallBookings().subscribe(response=>{
+        this.customerService.getAllHallBookings(window.localStorage.getItem("user")).subscribe(response=>{
           this.bookingHalls=response;
         })
       }else{

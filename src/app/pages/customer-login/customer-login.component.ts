@@ -59,8 +59,12 @@ export class CustomerLoginComponent {
             window.localStorage.setItem("user", response.user);
             this.router.navigate(['/home']);
         }else{
+          this.loading = true;
           console.log("incorrect credintials")
         }
+        },(error)=>{
+          this.loading = true;
+          console.log("System maybe offline")
         })
 
 

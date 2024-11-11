@@ -31,6 +31,7 @@ export class SideNavComponent implements OnInit{
   canAccessStaff=false;
   canAccessOrder=false;
   canAccessCustomer=false;
+  canAccessBooking=false;
   
   constructor(private authService:AuthServiceService){
 
@@ -45,6 +46,7 @@ export class SideNavComponent implements OnInit{
       this.canAccessStaff=true;
       this.canAccessOrder=true;
       this.canAccessCustomer=true;
+      this.canAccessBooking=true;
     }else if(currentRole=="Receptionist"){
       this.canAccessRoom=true;
     }else if(currentRole=="Chef"){
