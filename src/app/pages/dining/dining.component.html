@@ -9,7 +9,8 @@
             <div>
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link" [class.active]="isActiveFoods" aria-current="page" (click)="getFoods()">Order
+                        <a class="nav-link" [class.active]="isActiveFoods" aria-current="page"
+                            (click)="getFoods()">Order
                             Foods From Resturant</a>
                     </li>
                     <li class="nav-item">
@@ -42,7 +43,8 @@
                                     </tr>
                                 </table>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <button type="button" class="btn btnView" (click)="addtoCart(food)">Add to Cart</button>
+                                    <button type="button" class="btn btnView" (click)="addtoCart(food)">Add to
+                                        Cart</button>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +54,16 @@
                 </div>
             </div>
             <div *ngIf="isActiveOrders">
-                food here
+                <div class="row myOrderData" *ngFor="let order of myOrders" >
+                    <div>Order No: GrandDining00{{order.id}}</div>
+                    <div>Status: {{order.status}}</div>
+                    <div class="col" *ngFor="let food of order.foods">
+                        <div class="col-md-4">Name : {{food.name}}</div>
+                        <div class="col-md-4">Price: {{food.price}}</div>
+                        <div class="col-md-4">Quantity: {{food.qty}}</div>
+                    </div>
+                    <button class="btn btn-danger btnCancelOrder" *ngIf="order.status=='Pending'" (click)="confirm(order.id)">Cancel Order</button>
+                </div>
             </div>
 
         </div>

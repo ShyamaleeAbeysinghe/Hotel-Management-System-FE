@@ -61,3 +61,10 @@
     width: 100vW;
     background-color: #0df164e3;
 }
+
+.bookingArea{
+    background-color: white !important;
+    height: 100%;
+    margin-top: 5vh;
+    margin-bottom: 30px;
+}

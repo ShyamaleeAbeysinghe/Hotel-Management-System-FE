@@ -15,6 +15,7 @@ import { MyBookingComponent } from './pages/my-booking/my-booking.component';
 import { ViewRoomBookingComponent } from './pages/admin/view-room-booking/view-room-booking.component';
 import { DiningComponent } from './pages/dining/dining.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { ViewOrdersComponent } from './pages/admin/view-orders/view-orders.component';
 
 export const routes: Routes = [
   
@@ -65,7 +66,7 @@ export const routes: Routes = [
     component:ViewMealComponent,
     canActivate: [authGuard],
     data: {
-      roles: ['Admin','Chef','Room Boy']
+      roles: ['Admin','Chef']
     }
 },
 {
@@ -73,7 +74,7 @@ export const routes: Routes = [
     component:ViewRoomBookingComponent,
     canActivate: [authGuard],
     data: {
-      roles: ['Admin']
+      roles: ['Admin','Receptionist']
     }
 },
 {
@@ -85,7 +86,15 @@ export const routes: Routes = [
     component:ViewCustomerComponent,
     canActivate: [authGuard],
     data: {
-      roles: ['Admin']
+      roles: ['Admin','Receptionist']
+    }
+},
+{
+    path:"admin/view-orders",
+    component:ViewOrdersComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Admin','Receptionist','Chef','Room Boy']
     }
 },
 {

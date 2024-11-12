@@ -35,7 +35,7 @@ export class AuthServiceService {
     } else if (role == "Room Boy") {
       window.localStorage.setItem("STATE", "true");
       window.localStorage.setItem("ROLE", role)
-      this.router.navigate(['/admin/view-meal']);
+      this.router.navigate(['/admin/view-orders']);
     }
     // return of({ success: this.isLogin, role: this.roleAs });
   }
@@ -66,7 +66,7 @@ export class AuthServiceService {
     localStorage.setItem('STATE', 'false');
     localStorage.setItem('ROLE', '');
     localStorage.setItem('user', '');
-    localStorage.setItem('food', '');
+    localStorage.setItem('food', JSON.stringify([]));
     this.router.navigate(['/signin']);
   }
 

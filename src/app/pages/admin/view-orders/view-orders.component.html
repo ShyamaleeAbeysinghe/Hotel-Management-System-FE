@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-2 col-md-3 col-xl-2 col-sm-3 col-xs-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <app-side-nav></app-side-nav>
+            </div>
+
+        </div>
+        <div class="col-10 col-md-9 col-xl-10 col-sm-9 col-xs-10  bg-light">
+            <div>
+                <h1 class="HallD">Food Ordering Details</h1>
+            </div>
+            <div>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" [class.active]="isPendingOrder" aria-current="page"
+                            (click)="pendingOrders()">Pending Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [class.active]="isCompletedOrder" (click)="completedOrders()">Completed Orders</a>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="isPendingOrder">
+                <div class="row pendingOrderData" *ngFor="let order of foodOrders" >
+                    <div>Order No: GrandDining00{{order.id}}</div>
+                    <div>Status: {{order.status}}</div>
+                    <div class="col" *ngFor="let food of order.foods">
+                        <div class="col-md-4">Name : {{food.name}}</div>
+                        <div class="col-md-4">Price: {{food.price}}</div>
+                        <div class="col-md-4">Quantity: {{food.qty}}</div>
+                    </div>
+                    <button class="btn btn-primary btnCancelOrder" *ngIf="order.status=='Pending' && !isAdmin" (click)="confirmProcess(order)">Start Processing Order</button>
+                    <button class="btn btn-success btnCancelOrder" *ngIf="order.status=='Preparing' && !isAdmin" (click)="confirmComplete(order)">Complete Order</button>
+                    <button class="btn btn-success btnCancelOrder" *ngIf="order.status=='Delivering' && !isAdmin" (click)="confirmDelivered(order)">Delivered Order</button>
+                    <label class="orderwarning" *ngIf="isAdmin">{{order.status}}</label>
+                </div>
+            </div>
+            <div *ngIf="isCompletedOrder">
+                <div class="row pendingOrderData" *ngFor="let order of foodOrders" >
+                    <div>Order No: GrandDining00{{order.id}}</div>
+                    <div>Status: {{order.status}}</div>
+                    <div class="col" *ngFor="let food of order.foods">
+                        <div class="col-md-4">Name : {{food.name}}</div>
+                        <div class="col-md-4">Price: {{food.price}}</div>
+                        <div class="col-md-4">Quantity: {{food.qty}}</div>
+                    </div>
+                    <label class="orderStatus">{{order.status}}</label>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
+

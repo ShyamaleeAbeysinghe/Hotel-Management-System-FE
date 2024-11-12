@@ -29,9 +29,9 @@ export class SideNavComponent implements OnInit{
   canAccessHall=false;
   canAccessMeals=false;
   canAccessStaff=false;
-  canAccessOrder=false;
   canAccessCustomer=false;
   canAccessBooking=false;
+  canAccessOrders=false;
   
   constructor(private authService:AuthServiceService){
 
@@ -44,15 +44,19 @@ export class SideNavComponent implements OnInit{
       this.canAccessHall=true;
       this.canAccessMeals=true;
       this.canAccessStaff=true;
-      this.canAccessOrder=true;
       this.canAccessCustomer=true;
       this.canAccessBooking=true;
+      this.canAccessOrders=true;
     }else if(currentRole=="Receptionist"){
       this.canAccessRoom=true;
+      this.canAccessBooking=true;
+      this.canAccessOrders=true;
+      this.canAccessCustomer=true;
     }else if(currentRole=="Chef"){
       this.canAccessMeals=true;
+      this.canAccessOrders=true;
     }else if(currentRole=="Room Boy"){
-      this.canAccessMeals=true;
+      this.canAccessOrders=true;
     }
   }
   signOut(){

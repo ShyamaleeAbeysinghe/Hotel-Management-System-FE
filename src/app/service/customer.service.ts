@@ -34,8 +34,13 @@ export class CustomerService {
     return this.http.post<any>(this.hostUrl+"/api/hall-booking/saveBooking", booking);
   }
 
-  public getAllRoomBookings(user:any) {
-    return this.http.get<any>(this.hostUrl+"/api/room-booking/getAll?userId="+user);
+  public getActiveRoomBookings(user:any) {
+    return this.http.get<any>(this.hostUrl+"/api/room-booking/getAllActive?userId="+user);
+  }
+
+  
+  public getAllRoomBookings() {
+    return this.http.get<any>(this.hostUrl+"/api/room-booking/getAllBookings");
   }
 
   public getAllHallBookings(user:any) {
@@ -60,5 +65,13 @@ export class CustomerService {
 
   public placeOrder(order: any) {
     return this.http.post<any>(this.hostUrl+"/api/order/add-order", order);
+  }
+
+  public getOrderByCustomer(customerId: any) {
+    return this.http.get<any>(this.hostUrl+"/api/order/getAllByCustomer/"+customerId);
+  }
+
+  public cancelOrder(orderId: any) {
+    return this.http.delete<any>(this.hostUrl+"/api/order/delete-order/"+orderId);
   }
 }

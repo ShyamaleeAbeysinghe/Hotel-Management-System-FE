@@ -16,7 +16,7 @@ interface Food {
 @Component({
   selector: 'app-dining',
   standalone: true,
-  imports: [HeaderComponent, CommonModule,FooterComponent],
+  imports: [HeaderComponent, CommonModule, FooterComponent],
   templateUrl: './dining.component.html',
   styleUrl: './dining.component.css'
 })
@@ -26,16 +26,18 @@ export class DiningComponent implements OnInit {
   isActiveFoods = true;
   isActiveOrders = false;
   foodCart: Food[] = [];
+  myOrders: any;
 
   constructor(private toastr: ToastrService, private confirmationDialogService: ConfirmationDialogService,
     private customerService: CustomerService) {
 
   }
   ngOnInit(): void {
-    // @ts-ignore
-    this.foodCart = JSON.parse(localStorage.getItem("food"));
-    if (this.foodCart == undefined) {
+    if (localStorage.getItem("food") == undefined) {
       this.foodCart = []
+    } else {
+      // @ts-ignore
+      this.foodCart = JSON.parse(localStorage.getItem("food"));
     }
     this.customerService.isCustomerCheckedIn(window.localStorage.getItem("user")).subscribe(response => {
       if (response) {
@@ -52,6 +54,7 @@ export class DiningComponent implements OnInit {
     }, (error) => {
       this.toastr.error("Something went wrong", "Error")
     })
+    this.getOrdersByCustomer();
   }
 
   getFoods() {
@@ -72,15 +75,45 @@ export class DiningComponent implements OnInit {
     this.foodCart.forEach(item => {
       if (item.id == food.id) {
         itemFound = true;
-        item.qty=item.qty+1;
+        item.qty = item.qty + 1;
       }
     })
-    if(!itemFound){
+    if (!itemFound) {
       const foodItem: Food = { id: food.id, name: food.foodName, price: food.price, qty: 1 }
       this.foodCart.push(foodItem);
     }
     localStorage.setItem("food", JSON.stringify(this.foodCart))
-    this.toastr.success("Item added to cart","Success")
+    this.toastr.success("Item added to cart", "Success")
+  }
+
+  confirm(orderId: number) {
+    this.confirmationDialogService.confirm('Please confirm..', "You are going to cancel this order")
+      .then((confirmed) => {
+        if (confirmed) {
+          this.cancelOrder(orderId)
+        }
+      })
+      .catch(() => console.log('User dismissed the dialog '));
+  }
+
+  getOrdersByCustomer() {
+    this.customerService.getOrderByCustomer(localStorage.getItem("user")).subscribe(response => {
+      this.myOrders = response;
+    }, (error) => {
+      this.toastr.error("Something went wrong", "Error")
+    })
+  }
+
+  cancelOrder(orderId: number) {
+    this.customerService.cancelOrder(orderId).subscribe(response => {
+      if (response == true) {
+        this.getOrdersByCustomer();
+      }else{
+        this.toastr.error("Ypu can't cancel this order", "Error")
+      }
+    }, (error) => {
+      this.toastr.error("Something went wrong", "Error")
+    })
   }
 
 }

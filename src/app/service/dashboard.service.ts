@@ -91,4 +91,35 @@ export class DashboardService {
   public checkInRoomBooking(bookingId:number) {
     return this.http.post<any>(this.hostUrl+"/api/room-booking/checkIn/"+bookingId,null);
   }
+
+  public checkOutRoomBooking(bookingId:number) {
+    return this.http.post<any>(this.hostUrl+"/api/room-booking/checkOut/"+bookingId,null);
+  }
+
+  public getRoomBookingTotal(bookingId:number) {
+    return this.http.get<any>(this.hostUrl+"/api/room-booking/getRoomBookingTotal/"+bookingId);
+  }
+
+  public getOrdersForChef() {
+    return this.http.get<any>(this.hostUrl+"/api/order/getAllForChef");
+  }
+
+  public getOrdersForRoomBoy() {
+    return this.http.get<any>(this.hostUrl+"/api/order/getAllForRoomBoy");
+  }
+
+  public getPendingOrdersForAdmin() {
+    return this.http.get<any>(this.hostUrl+"/api/order/getPendingForAdmin");
+  }
+
+  public getCompletedForChef() {
+    return this.http.get<any>(this.hostUrl+"/api/order/getCompletedForChef");
+  }
+
+  public getCompletedForRoomBoy() {
+    return this.http.get<any>(this.hostUrl+"/api/order/getCompletedForRoomBoy");
+  }
+  public updateOrder(order: any) {
+    return this.http.put<any>(this.hostUrl+"/api/order/update-order",order);
+  }
 }

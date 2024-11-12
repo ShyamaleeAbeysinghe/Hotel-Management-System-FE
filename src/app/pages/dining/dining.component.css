@@ -84,3 +84,9 @@
 .diningImg {
     height: 200px;
 }
+
+.myOrderData{
+    margin-bottom: 5vh;
+    border: solid 1px black;
+}
+

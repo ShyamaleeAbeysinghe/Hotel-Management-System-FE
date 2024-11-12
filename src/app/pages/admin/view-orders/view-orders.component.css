@@ -1,0 +1,13 @@
+.pendingOrderData{
+    margin-bottom: 5vh;
+    border: solid 1px black;
+}
+
+.orderStatus{
+    background-color: green;
+    color: white;
+}
+
+.orderwarning{
+    background-color: #E4A11B;
+}

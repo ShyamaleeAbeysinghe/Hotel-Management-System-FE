@@ -26,6 +26,7 @@ export class ViewRoomBookingComponent {
   isActiveBookings = true;
   isCheckedIn = false;
   isCancelledBooking = false;
+  isAllBooking = false;
   bookings: any;
 
   displayedColumns: string[] = ['cname', 'contact', 'roomName', 'roomNo', 'checkIn', 'checkOut', 'price', 'action'];
@@ -59,6 +60,7 @@ export class ViewRoomBookingComponent {
     this.isActiveBookings = true;
     this.isCheckedIn = false;
     this.isCancelledBooking = false;
+    this.isAllBooking = false;
     var activeBookings: any = [];
     for (let i = 0; i < this.bookings.length; i++) {
       if (this.bookings[i].status == "Pending") {
@@ -74,6 +76,7 @@ export class ViewRoomBookingComponent {
     this.isActiveBookings = false;
     this.isCheckedIn = true;
     this.isCancelledBooking = false;
+    this.isAllBooking = false;
     var checkedInBookings: any = [];
     for (let i = 0; i < this.bookings.length; i++) {
       if (this.bookings[i].status == "CheckIn") {
@@ -85,10 +88,21 @@ export class ViewRoomBookingComponent {
     this.dataSource.sort = this.sort;
   }
 
+  getAllBookings() {
+    this.isActiveBookings = false;
+    this.isCheckedIn = false;
+    this.isCancelledBooking = false;
+    this.isAllBooking = true;
+    this.dataSource = new MatTableDataSource(this.bookings);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
   getCancelledBookings() {
     this.isActiveBookings = false;
     this.isCheckedIn = false;
     this.isCancelledBooking = true;
+    this.isAllBooking = false;
     var cancelledBookings: any = [];
     for (let i = 0; i < this.bookings.length; i++) {
       if (this.bookings[i].status == "Cancelled") {
@@ -99,7 +113,7 @@ export class ViewRoomBookingComponent {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-  confirm(bookingId: number) {
+  confirmCheckIn(bookingId: number) {
     this.confirmationDialogService.confirm('Please confirm..', "Are you sure?")
       .then((confirmed) => {
         if (confirmed) {
@@ -109,18 +123,50 @@ export class ViewRoomBookingComponent {
       .catch(() => console.log('User dismissed the dialog '));
 
   }
+  confirmCheckOut(bookingId: number) {
+    this.dashboardService.getRoomBookingTotal(bookingId).subscribe(response => {
+      if (response != null) {
+        this.confirmationDialogService.confirm('Please confirm..', "Customer have to pay total bill of LKR "+response+". You can proceed this after completion of the payment")
+          .then((confirmed) => {
+            if (confirmed) {
+              this.checkOut(bookingId);
+            }
+          })
+          .catch(() => console.log('User dismissed the dialog '));
+      }
+    }, (error) => {
+      this.toastr.error("Something went wrong", "Error")
+    })
+
+
+  }
 
   checkIn(bookingId: number) {
     this.dashboardService.checkInRoomBooking(bookingId).subscribe(response => {
-      if(response.status==="success"){
-        this.toastr.success("Check In success","Success")
+      if (response.status === "success") {
+        this.toastr.success("Check In success", "Success")
         this.dashboardService.getAllRoomBookings().subscribe(response => {
           this.bookings = response;
           this.getActiveBookings();
         })
-      }else if(response.status==="failed" && response.reason==="invalid date"){
+      } else if (response.status === "failed" && response.reason === "invalid date") {
         this.toastr.error("Check in date is incorrect. Customer can't check in today")
-      }else{
+      } else {
+        this.toastr.error("Something went wrong", "Error")
+      }
+    }, (error) => {
+      this.toastr.error("Something went wrong", "Error")
+    })
+  }
+  checkOut(bookingId: number) {
+    this.dashboardService.checkOutRoomBooking(bookingId).subscribe(response => {
+      if (response === "ACCEPTED") {
+        this.toastr.success("Check Out success", "Success")
+        this.dashboardService.getAllRoomBookings().subscribe(response => {
+          this.bookings = response;
+          this.getCheckedIn();
+        })
+      }  else {
         this.toastr.error("Something went wrong", "Error")
       }
     }, (error) => {
