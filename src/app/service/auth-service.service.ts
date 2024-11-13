@@ -48,6 +48,14 @@ export class AuthServiceService {
     return this.http.post<any>(this.hostUrl + "/api/customer/add", customer);
   }
 
+  public customerupdate(customer: any) {
+    return this.http.put<any>(this.hostUrl + "/api/customer/update", customer);
+  }
+
+  public updatePassword(customer: any) {
+    return this.http.put<any>(this.hostUrl + "/api/customer/updatepw", customer);
+  }
+
   public customerLogin(customer: any) {
     return this.http.post<any>(this.hostUrl + "/api/login/customer", customer);
   }

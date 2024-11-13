@@ -7,17 +7,19 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [HeaderComponent,DashboardComponent, AvailableRoomsComponent, AvailableHallComponent, 
-    CommonModule, ReactiveFormsModule,FooterComponent],
+    CommonModule, ReactiveFormsModule,FooterComponent,NgxLoadingModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
   form!: FormGroup;
+  loading = false;
   isRoomSelected = false;
   isHallSelected = false;
   isNothingSelected=true;

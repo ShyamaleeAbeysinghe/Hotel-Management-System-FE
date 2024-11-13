@@ -4,13 +4,9 @@
    
      <div class="col-lg-6 col-sm-12">
         <div class="card">
-            <h2 class="card-header text-center">Login</h2>
+            <h2 class="card-header text-center">Hotel Management Login</h2>
             <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            <img src="../../../../assets/img/icon/signin-100.png" class="loginImg">
             <br>
             <div class="card-body">
                 <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -22,9 +18,9 @@
                         </div>
                     </div>
                     
-                    <div class="mb-3 " >
+                    <label class="form-label"><b>Password</b></label>
+                    <div class="input-group col-12 mx-auto">
                         
-                        <label class="form-label"><b>Password</b></label>
                         <input type="{{(showPassword === false)?'password':'text'}}" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" >
                         <mat-icon matSuffix style="cursor: pointer;" (click)="toggleShowPassword()">
                             {{!showPassword?'visibility':'visibility_off'}}</mat-icon>
@@ -49,12 +45,7 @@
         </div>
     </div> 
     <div class="col-lg-6 col-sm-12 " >
-        <h1 class="welcom">Welcome! <br> Hotel Garand</h1>
-        <li >
-            <a [routerLink]="['/signUp']"  class="nav-link px-0 align-middle">
-                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Sign Up</span> </a>
-    
-        </li>
+        <h1 class="welcom">Welcome! <br> Hotel Grand</h1>
     </div>  
 </div>
 

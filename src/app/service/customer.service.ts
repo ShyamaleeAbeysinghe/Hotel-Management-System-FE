@@ -44,7 +44,7 @@ export class CustomerService {
   }
 
   public getAllHallBookings(user:any) {
-    return this.http.get<any>(this.hostUrl+"/api/hall-booking/getAll?userId="+user);
+    return this.http.get<any>(this.hostUrl+"/api/hall-booking/getAllByCustomer?userId="+user);
   }
 
   public cancelRoomBooking(bookingId:number) {

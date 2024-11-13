@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';import { MatIn
 import { MealComponent } from '../meal/meal.component';
 import { ToastrService } from 'ngx-toastr';
 import { DashboardService } from '../../../service/dashboard.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 interface Meal {
   id:number,
@@ -23,7 +25,7 @@ interface Meal {
   selector: 'app-view-meal',
   standalone: true,
   imports: [SideNavComponent,ModalModule, MatPaginator, MatSort,MatTableModule,
-    MatPaginatorModule,MatSortModule,MatFormFieldModule,MatInputModule],
+    MatPaginatorModule,MatSortModule,MatFormFieldModule,MatInputModule,MatTableExporterModule,MatIconModule],
   templateUrl: './view-meal.component.html',
   styleUrl: './view-meal.component.css'
 })

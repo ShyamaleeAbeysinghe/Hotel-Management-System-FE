@@ -56,9 +56,9 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 ">
+                    <label class="form-label"><b>Password</b></label>
+                    <div class="input-group col-12 mx-auto">
 
-                        <label class="form-label"><b>Password</b></label>
                         <input type="{{(showPassword === false)?'password':'text'}}" formControlName="password"
                             class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
                         <mat-icon matSuffix style="cursor: pointer;" (click)="toggleShowPassword()">
@@ -72,15 +72,21 @@
                     <div class="card-footer d-flex">
                         <button class="btn btnLogin mx-auto">
                             <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> -->
-                            Submit
+                            SignUp
                         </button>
                     </div>
                 </form>
+                <div class="text-center">
+                    <span>Already have an account? </span>
+                    <a [routerLink]="['/signin']" class="nav-link px-0 align-middle signup">
+                         <span class="ms-1 d-none d-sm-inline">SignIn</span> </a>
+        
+                </div>
             </div>
         </div>
     </div>
     <div class="col-lg-6 col-sm-12 ">
-        <h1 class="welcom">Welcome! <br> Hotel Garand</h1>
+        <h1 class="welcom">Welcome to! <br> Hotel Grand</h1>
     </div>
 
 

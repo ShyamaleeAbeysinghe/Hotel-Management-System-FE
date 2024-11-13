@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';import { MatIn
 import { StaffComponent } from '../staff/staff.component';
 import { DashboardService } from '../../../service/dashboard.service';
 import { ToastrService } from 'ngx-toastr';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 interface Staff {
   
@@ -24,7 +26,7 @@ interface Staff {
   selector: 'app-view-staff',
   standalone: true,
   imports: [SideNavComponent, ModalModule, MatPaginator, MatSort,MatTableModule,
-    MatPaginatorModule,MatSortModule,MatFormFieldModule,MatInputModule],
+    MatPaginatorModule,MatSortModule,MatFormFieldModule,MatInputModule,MatTableExporterModule,MatIconModule],
   templateUrl: './view-staff.component.html',
   styleUrl: './view-staff.component.css'
 })

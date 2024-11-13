@@ -24,3 +24,6 @@
     background-color: #023d04;
     border-color: #023d04;
   }
+  .btn-export{
+    float: right;
+}

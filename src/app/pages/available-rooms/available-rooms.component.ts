@@ -44,6 +44,7 @@ export class AvailableRoomsComponent implements OnInit {
       .then((confirmed) => {
         if (confirmed) {
           this.bookNow(room);
+          // this.checkout();
         }
       })
       .catch(() => console.log('User dismissed the dialog '));

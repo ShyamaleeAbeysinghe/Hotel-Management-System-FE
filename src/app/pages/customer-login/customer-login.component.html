@@ -1,60 +1,62 @@
-
 <div class="row maindiv">
-    
-   
-    <div class="col-lg-6 col-sm-12">
-       <div class="card">
-           <h2 class="card-header text-center">Login</h2>
-           <br>
-           <br>
-           <br>
-           <br>
-           <br>
-           <br>
-           <br>
-           <div class="card-body">
-               <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                   <div class="mb-3">
-                       <label class="form-label"><b>Username</b></label>
-                       <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" />
-                       <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
-                           <div *ngIf="f['username'].errors['required']">Username is required</div>
-                       </div>
-                   </div>
-                   
-                   <div class="mb-3 " >
-                       
-                       <label class="form-label"><b>Password</b></label>
-                       <input type="{{(showPassword === false)?'password':'text'}}" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" >
-                       <mat-icon matSuffix style="cursor: pointer;" (click)="toggleShowPassword()">
-                           {{!showPassword?'visibility':'visibility_off'}}</mat-icon>
-                       <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-                           <div *ngIf="f['password'].errors['required']">Password is required</div>
-                           <div *ngIf="f['password'].errors['pattern']">Incorrect password</div>
-                       </div>
-                   </div>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   
-                   <div class="card-footer d-flex">
-                       <button [disabled]="loading" class="btn btnLogin mx-auto">
-                           <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-                           Login
-                       </button>
-                   </div>
-               </form>
-           </div>
-       </div>
-   </div> 
-   <div class="col-lg-6 col-sm-12 " >
-       <h1 class="welcom">Welcome! <br> Hotel Garand</h1>
-       <li >
-           <a [routerLink]="['/signUp']"  class="nav-link px-0 align-middle">
-               <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Sign Up</span> </a>
-   
-       </li>
-   </div>  
-</div>
 
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="card">
+            <h2 class="card-header text-center">Login</h2>
+            <img src="../../../assets/img/icon/signin-100.png" class="loginImg">
+            <br>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <label class="form-label"><b>Username</b></label>
+                    <div class="input-group col-12 mx-auto">
+                        <input type="text" formControlName="username" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" />
+                        <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                            <div *ngIf="f['username'].errors['required']">Username is required</div>
+                        </div>
+                    </div>
+
+                    <label class="form-label"><b>Password</b></label>
+                    <div class="input-group col-12 mx-auto">
+                        <input type="{{(showPassword === false)?'password':'text'}}" formControlName="password"
+                            class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                        <div>
+                            <i alt="show" class="far fa-eye-slash eye-hide" *ngIf="showPassword"
+                                (click)="toggleShowPassword()" [class.hide]="showPassword"></i>
+                            <i alt="hide" class="far fa-eye eye-show" *ngIf="!showPassword"
+                                (click)="toggleShowPassword()" [class.hide]="!showPassword"></i>
+                        </div>
+                        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                            <div *ngIf="f['password'].errors['required']">Password is required</div>
+                            <div *ngIf="f['password'].errors['pattern']">Incorrect password</div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <div class="card-footer d-flex">
+                        <button [disabled]="loading" class="btn btnLogin mx-auto">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                            Login
+                        </button>
+                        
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <span>Didn't have Account? </span>
+                        <a [routerLink]="['/signUp']" class="nav-link px-0 align-middle signup">
+                             <span class="ms-1 d-none d-sm-inline">Sign Up</span> </a>
+            
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-12 welcomeBar">
+        <h1 class="welcom">Welcome to! <br> Hotel Grand</h1>
+       
+    </div>
+</div>

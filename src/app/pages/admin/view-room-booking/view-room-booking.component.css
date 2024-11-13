@@ -1,4 +1,8 @@
 .searchFilter{
-  float: right;
   margin-top: 2vh;
+}
+
+.btn-export{
+  margin-top: 2vh;
+  float: right;
 }

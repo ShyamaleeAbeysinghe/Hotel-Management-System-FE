@@ -67,7 +67,7 @@ export class CartComponent implements OnInit{
   placeOrder(){
     let request={
       foods:this.foods,
-      totalPrice:1250,
+      totalPrice:this.total,
       customerId:localStorage.getItem("user")
     }
     this.customerService.placeOrder(request).subscribe(response=>{

@@ -88,6 +88,10 @@ export class DashboardService {
     return this.http.get<any>(this.hostUrl+"/api/room-booking/getAllBookings");
   }
 
+  public getAllHallBookings() {
+    return this.http.get<any>(this.hostUrl+"/api/hall-booking/getAllBookings");
+  }
+
   public checkInRoomBooking(bookingId:number) {
     return this.http.post<any>(this.hostUrl+"/api/room-booking/checkIn/"+bookingId,null);
   }

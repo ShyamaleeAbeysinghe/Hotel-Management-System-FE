@@ -24,3 +24,7 @@
     background-color: #023d04;
     border-color: #023d04;
   }
+  .btn-export{
+    margin-top: 2vh;
+    float: right;
+  }

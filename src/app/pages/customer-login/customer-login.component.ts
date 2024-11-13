@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthServiceService } from '../../service/auth-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-customer-login',
@@ -24,7 +25,8 @@ export class CustomerLoginComponent {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authservice: AuthServiceService
+        private authservice: AuthServiceService,
+        private toastr:ToastrService
     ) { }
 
     ngOnInit() {
@@ -59,11 +61,11 @@ export class CustomerLoginComponent {
             window.localStorage.setItem("user", response.user);
             this.router.navigate(['/home']);
         }else{
-          this.loading = true;
-          console.log("incorrect credintials")
+          this.loading = false;
+          this.toastr.error("Incorrect credintials","Error")
         }
         },(error)=>{
-          this.loading = true;
+          this.loading = false;
           console.log("System maybe offline")
         })
 

@@ -52,8 +52,7 @@ export class MyBookingComponent implements OnInit {
   }
   getAllBookings() {
     this.customerService.getAllRoomBookings().subscribe(response => {
-      this.allBookings = response;
-      this.dataSource = new MatTableDataSource(this.allBookings);
+      this.dataSource = new MatTableDataSource(response);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })

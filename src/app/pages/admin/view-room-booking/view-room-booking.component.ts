@@ -12,13 +12,16 @@ import { ToastrService } from 'ngx-toastr';
 import { DashboardService } from '../../../service/dashboard.service';
 import { ConfirmationDialogService } from '../../confirmation-dialog/confirmation-dialog.service';
 import { error } from 'jquery';
+import { MatTableExporterModule } from 'mat-table-exporter';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
   selector: 'app-view-room-booking',
   standalone: true,
   imports: [MatTabsModule, SideNavComponent, CommonModule, SideNavComponent, ModalModule, MatPaginator,
-    MatSort, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule],
+    MatSort, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule,
+    MatTableExporterModule,MatIconModule],
   templateUrl: './view-room-booking.component.html',
   styleUrl: './view-room-booking.component.css'
 })

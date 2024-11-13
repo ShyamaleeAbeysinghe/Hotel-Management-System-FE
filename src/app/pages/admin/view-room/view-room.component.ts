@@ -8,6 +8,8 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field'; import { MatInputModule } from '@angular/material/input';
 import { DashboardService } from '../../../service/dashboard.service';
 import { ToastrService } from 'ngx-toastr';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 interface Room {
   roomName: string,
@@ -22,7 +24,7 @@ interface Room {
   selector: 'app-view-room',
   standalone: true,
   imports: [SideNavComponent, ModalModule, MatPaginator, MatSort, MatTableModule,
-    MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule],
+    MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule,MatTableExporterModule,MatIconModule],
   templateUrl: './view-room.component.html',
   styleUrl: './view-room.component.css'
 })

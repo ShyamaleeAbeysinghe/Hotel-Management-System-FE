@@ -16,14 +16,16 @@ import { ViewRoomBookingComponent } from './pages/admin/view-room-booking/view-r
 import { DiningComponent } from './pages/dining/dining.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ViewOrdersComponent } from './pages/admin/view-orders/view-orders.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { ViewHallBookingComponent } from './pages/admin/view-hall-booking/view-hall-booking.component';
 
 export const routes: Routes = [
   
-// {
-//   path:"",
-//   redirectTo : '/home' ,
-//   pathMatch : 'full'
-// },
+{
+  path:"",
+  redirectTo : '/home' ,
+  pathMatch : 'full'
+},
 {
   path:"admin",
   redirectTo : '/admin/dashboard' ,
@@ -78,6 +80,14 @@ export const routes: Routes = [
     }
 },
 {
+    path:"admin/hall-booking",
+    component:ViewHallBookingComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Admin','Receptionist']
+    }
+},
+{
     path:"admin/login",
     component:LoginComponent
 },
@@ -120,5 +130,9 @@ export const routes: Routes = [
 {
     path:"cart",
     component:CartComponent
+},
+{
+    path:"profile",
+    component:ProfileComponent
 }
 ];
