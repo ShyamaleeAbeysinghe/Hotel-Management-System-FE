@@ -3,9 +3,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   IconDefinition,
   faMoneyBill,
+  faBed,
+  faHotel,
+  faBellConcierge,
   faUsers,
-  faClock,
-  faBriefcase,
+  faUmbrellaBeach
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -42,10 +44,10 @@ export class AdminCardComponent {
 
   // Map the icon names to FontAwesome icons
   iconMappings: { [key: string]: IconDefinition } = {
-    budget: faMoneyBill,
-    project: faUsers,
-    clock: faClock,
-    briefcase: faBriefcase,
+    activeBooking: faUmbrellaBeach,
+    staff: faUsers,
+    orders: faBellConcierge,
+    allBooking: faBed,
   };
 
 

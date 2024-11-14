@@ -1,6 +1,3 @@
-
-
-
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-2 col-md-3 col-xl-2 col-sm-3 col-xs-2 px-sm-2 px-0 bg-dark">
@@ -12,31 +9,32 @@
             <div class="wrapper">
                 <div class="cards-container">
                     <!-- Card 1 -->
-                    <app-admin-card title="Budget" [value]="750.9" change="13%" iconName="budget"></app-admin-card>
-    
+                    <app-admin-card title="Total Bookings" [value]="totalBooking" iconName="allBooking"></app-admin-card>
+
                     <!-- Card 2 -->
-                    <app-admin-card title="New Projects" [value]="215" change="30%" iconName="project"></app-admin-card>
-    
+                    <app-admin-card title="Active Bookings" [value]="activeBooking" iconName="activeBooking"></app-admin-card>
+
                     <!-- Card 3 -->
-                    <app-admin-card title="Total hours" [value]="1400" change="-5%" iconName="clock"></app-admin-card>
-    
+                    <app-admin-card title="Active Orders" [value]="activeOrders" iconName="orders"></app-admin-card>
+
                     <!-- Card 4 -->
-                    <app-admin-card title="Work load" [value]="95" change="10%" iconName="briefcase"></app-admin-card>
+                    <app-admin-card title="Staff Members" [value]="staffMembers" iconName="staff"></app-admin-card>
                 </div>
-    
+
                 <div class="applications-section">
-                    <h1>Applications</h1>
-                    <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>Company</th>
-                            <th>Offer</th>
-                            <th>Meeting</th>
-                            <th></th>
-                        </tr>
-                        <!-- ... (more HTML code) ... -->
-                    </table>
+                    <h1>Current Order Status</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <canvas baseChart [type]="'pie'" [datasets]="pieChartDatasets" [labels]="pieChartLabels"
+                                [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                            </canvas>
+                        </div>
+                        <div class="col-md-6">
+                            <canvas baseChart width="400" height="400" [type]="'line'" [data]="lineChartData"
+                                [options]="lineChartOptions" [legend]="lineChartLegend">
+                            </canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

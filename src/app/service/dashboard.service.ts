@@ -126,4 +126,17 @@ export class DashboardService {
   public updateOrder(order: any) {
     return this.http.put<any>(this.hostUrl+"/api/order/update-order",order);
   }
+
+  public getDashboardData() {
+    return this.http.get<any>(this.hostUrl+"/api/dashboard/getRoomDashboardData");
+  }
+
+  public getDashboardOrderData() {
+    return this.http.get<any>(this.hostUrl+"/api/dashboard/getDashboardOrderData");
+  }
+  
+
+  public getDashboardHistory() {
+    return this.http.get<any>(this.hostUrl+"/api/dashboard/get-history");
+  }
 }
