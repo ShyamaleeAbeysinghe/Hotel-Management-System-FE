@@ -59,6 +59,8 @@ export class CustomerLoginComponent {
           if (response.status == "success") {
             console.log("response received");
             window.localStorage.setItem("user", response.user);
+            window.localStorage.setItem("STATE", "true");
+            window.localStorage.setItem("ROLE", "Customer")
             this.router.navigate(['/home']);
         }else{
           this.loading = false;

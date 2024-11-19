@@ -20,8 +20,9 @@
             </div>
             <div *ngIf="isActiveFoods">
                 <div *ngIf="!isFoodsAvailable">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default n-a-area">
                         <div class="panel-body">This section avaible only when you booked room and checked in</div>
+                        <img src="../../../assets/img/icon/unavailable-480.png" alt="">
                     </div>
                 </div>
                 <div *ngIf="isFoodsAvailable">

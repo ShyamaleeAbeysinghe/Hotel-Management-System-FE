@@ -117,22 +117,42 @@ export const routes: Routes = [
 },
 {
     path:"home",
-    component:HomeComponent
+    component:HomeComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Customer']
+    }
 },
 {
     path:"booking",
-    component:MyBookingComponent
+    component:MyBookingComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Customer']
+    }
 },
 {
     path:"dining",
-    component:DiningComponent
+    component:DiningComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Customer']
+    }
 },
 {
     path:"cart",
-    component:CartComponent
+    component:CartComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Customer']
+    }
 },
 {
     path:"profile",
-    component:ProfileComponent
+    component:ProfileComponent,
+    canActivate: [authGuard],
+    data: {
+      roles: ['Customer']
+    }
 }
 ];
