@@ -50,7 +50,7 @@ export class CartComponent implements OnInit{
     }
     this.dataSource = new MatTableDataSource(this.foods);
     this.foods.forEach(item => {
-      this.total+=item.price;
+      this.total+=item.qty*item.price;
     })
   }
 
