@@ -12,6 +12,9 @@
             </div>
             <div class=" divHall">
                 <button class="btn addHall" (click)="addHall()">Add Hall</button>
+                
+                <button mat-raised-button class="btn btn-primary btn-export"
+              (click)="exporter.exportTable('xlsx', {fileName:'Hall Report', sheet: 'Hall Details'})"><i class="fas fa-file-excel"></i><b>Excel Export</b></button>
             </div>
             <br>
             <br>
@@ -19,8 +22,7 @@
             <mat-form-field>
                 <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
               </mat-form-field>
-              <button mat-raised-button class="btn btn-primary btn-export"
-              (click)="exporter.exportTable('xlsx', {fileName:'Hall Report', sheet: 'Hall Details'})"><i class="fas fa-file-excel"></i>Excel Export</button>
+              
           
             <div class="mat-app-background dark-theme">
                 <table mat-table [dataSource]="dataSource" matSort matTableExporter #exporter="matTableExporter">

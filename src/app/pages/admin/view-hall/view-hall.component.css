@@ -15,6 +15,9 @@
     color:white;
     font-weight: bold;
     float: right;
+   
+    width: 130px;
+    margin: 10px;
   }
   .btnEdit{
     background-color: #057909;
@@ -24,6 +27,11 @@
     background-color: #023d04;
     border-color: #023d04;
   }
-  .btn-export{
+  .btn-export {
+    background-color: #07bb0d;
+    border-color: #07bb0d;
+    margin: 10px;
     float: right;
+ 
+   
 }

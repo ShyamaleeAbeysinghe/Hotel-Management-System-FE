@@ -1,0 +1,15 @@
+.profile{
+    text-align: center !important;
+    font-size: 30px;
+    color: rgb(2, 58, 2);
+}
+.profile-button{
+    background-color: #023d04;
+    border-color: #023d04;
+    margin: 10px;
+}
+
+.btnChange{
+    background-color: #023d04;
+    border-color: #023d04;
+}

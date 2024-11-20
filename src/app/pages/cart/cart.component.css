@@ -15,4 +15,11 @@
 .total{
     font-size: 24px;
     font-weight: bold;
+}.btn-order{
+    background-color: #07bb0d;
+    border-color: #07bb0d;
+}
+.btnEdit{
+    background-color: #023d04;
+    border-color: #023d04;
 }

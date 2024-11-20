@@ -15,14 +15,16 @@
                 </div>
                 <div class=" divMeal">
                     <button class="btn addMeal" (click)="addMeal()">Add Meal</button>
+                    
+                    <button mat-raised-button class="btn btn-primary btn-export"
+                        (click)="exporter.exportTable('xlsx', {fileName:'Meal Report', sheet: 'Meals'})"><i class="fas fa-file-excel"></i>Excel Export</button>
                 </div>
                 <br>
                 <br>
                 <mat-form-field>
                     <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
                   </mat-form-field>
-                  <button mat-raised-button class="btn btn-primary btn-export"
-                        (click)="exporter.exportTable('xlsx', {fileName:'Meal Report', sheet: 'Meals'})"><i class="fas fa-file-excel"></i>Excel Export</button>
+                  
                     
                 <div class="mat-app-background dark-theme">
                     <table mat-table [dataSource]="dataSource" matSort matTableExporter #exporter="matTableExporter">

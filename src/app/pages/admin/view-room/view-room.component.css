@@ -8,6 +8,7 @@
     background-color: #07bb0d;
     border-color: #07bb0d;
     float: right;
+    margin: 10px;
   }
   .btnEdit{
     background-color: #057909;
@@ -19,4 +20,7 @@
   }
   .btn-export{
     float: right;
+    background-color: #07bb0d;
+    border-color: #07bb0d;
+    margin: 10px;
 }

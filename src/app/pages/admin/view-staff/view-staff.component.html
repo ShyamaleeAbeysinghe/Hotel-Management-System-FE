@@ -14,14 +14,17 @@
                     <h1 class="staffD">Staff Details</h1>
                 </div>
                 <button class="btn btn-primary addStaff" (click)="addStaff()">Add Staff</button>
+                <button mat-raised-button class="btn btn-primary btn-export"
+                        (click)="exporter.exportTable('xlsx', {fileName:'Staff Report', sheet: 'Staff'})"><i class="fas fa-file-excel"></i>Excel Export</button>
                 <br>
                 <br>
 
                 <mat-form-field>
                     <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+
+                    
                   </mat-form-field>
-                  <button mat-raised-button class="btn btn-primary btn-export"
-                        (click)="exporter.exportTable('xlsx', {fileName:'Staff Report', sheet: 'Staff'})"><i class="fas fa-file-excel"></i>Excel Export</button>
+                  
                     
                 <div class="mat-app-background dark-theme">
                     <table mat-table [dataSource]="dataSource" matSort matTableExporter #exporter="matTableExporter">

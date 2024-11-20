@@ -27,4 +27,8 @@
   .btn-export{
     margin-top: 2vh;
     float: right;
+    float: right;
+    background-color: #07bb0d;
+    border-color: #07bb0d;
+    
   }

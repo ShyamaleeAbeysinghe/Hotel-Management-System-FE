@@ -5,4 +5,17 @@
 .btn-export{
   margin-top: 2vh;
   float: right;
+  background-color: #07bb0d;
+  border: #07bb0d;
+}
+.staffD{
+  text-align: center;
+  color: green;
+}
+.nav-link{
+  color: green;
+}
+.btnEdit{
+  background-color: #07bb0d;
+  border: #07bb0d;
 }

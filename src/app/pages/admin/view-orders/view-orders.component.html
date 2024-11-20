@@ -8,16 +8,18 @@
         </div>
         <div class="col-10 col-md-9 col-xl-10 col-sm-9 col-xs-10  bg-light">
             <div>
-                <h1 class="HallD">Food Ordering Details</h1>
+                <h1 class="HallD"><b>Food Ordering Details</b></h1>
+                
             </div>
+            <br>
             <div>
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link" [class.active]="isPendingOrder" aria-current="page"
-                            (click)="pendingOrders()">Pending Orders</a>
+                            (click)="pendingOrders()"><b>Pending Orders</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [class.active]="isCompletedOrder" (click)="completedOrders()">Completed Orders</a>
+                        <a class="nav-link" [class.active]="isCompletedOrder" (click)="completedOrders()"><b>Completed Orders</b></a>
                     </li>
                 </ul>
             </div>

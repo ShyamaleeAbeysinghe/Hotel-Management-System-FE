@@ -1,6 +1,6 @@
 .pendingOrderData{
     margin-bottom: 5vh;
-    border: solid 1px black;
+    border: solid 1px green;
 }
 
 .orderStatus{
@@ -9,5 +9,12 @@
 }
 
 .orderwarning{
-    background-color: #E4A11B;
+    background-color: rgb(12, 233, 12);
+}
+.HallD{
+    text-align: center;
+    color: #07bb0d;
+}
+.nav-link{
+    color: green;
 }

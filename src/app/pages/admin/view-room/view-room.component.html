@@ -12,13 +12,15 @@
                     <h1 class="RoomD">Room Details</h1>
                 </div>
                 <button class="btn btn-primary addRoom" (click)="addRoom()">Add Room</button>
+
+                <button mat-raised-button class="btn btn-primary btn-export"
+                (click)="exporter.exportTable('xlsx', {fileName:'Room Report', sheet: 'Room Details'})"><i class="fas fa-file-excel"></i>Excel Export</button>
                 <br>
                 <br>
                 <mat-form-field>
                     <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
                   </mat-form-field>
-                  <button mat-raised-button class="btn btn-primary btn-export"
-                        (click)="exporter.exportTable('xlsx', {fileName:'Room Report', sheet: 'Room Details'})"><i class="fas fa-file-excel"></i>Excel Export</button>
+                 
                     
                 <div class="mat-app-background dark-theme">
                     <table mat-table [dataSource]="dataSource" matSort matTableExporter #exporter="matTableExporter">
